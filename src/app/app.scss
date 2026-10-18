@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.header-content img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.header-content p {
+    margin: 0;
+    color: #FFB770;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    color: #FFB770;
+}
+
+.header-text p {
+    color: #E6E4E6;
+}
+
+.primary-button {
+    background: #FFCFA1;
+    color: #221227;
+    border: none;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.check-icon {
+  width: 420px;
+  height: 420px;
+  margin-left: auto;
+}
