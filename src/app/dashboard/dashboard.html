@@ -1,69 +1,60 @@
-
-<header class="dashboard-header">
-  <nav class="header-content">
-    <button type="button" aria-label="Open menu">
-      <img src="assets/menu.svg" alt="" />
-    </button>
-
-    <p class="logo">Poll<br />App</p>
-  </nav>
-
-  <div class="header-main">
-    <div class="header-text">
-      <h1>Collect Feedback,<br />Unlock Ideas</h1>
-
-      <p>
-        Create and share surveys in minutes – from team events to
-        workplace culture. Collect opinions, engage your audience,
-        and turn feedback into action.
-      </p>
-
-      <button
-        class="primary-button"
-        type="button"
-        routerLink="/new-survey"
-      >
-        New Survey
+<div class="dashboard-page">
+  <header class="dashboard-header">
+    <nav class="header-content">
+      <button type="button" aria-label="Open menu">
+        <img src="assets/menu.svg" alt="" />
       </button>
+
+      <p class="logo">Poll<br />App</p>
+    </nav>
+
+    <div class="header-main">
+      <div class="header-text">
+        <h1>Collect Feedback,<br />Unlock Ideas</h1>
+
+        <p>
+          Create and share surveys in minutes – from team events to workplace culture. Collect
+          opinions, engage your audience, and turn feedback into action.
+        </p>
+
+        <button class="primary-button" type="button" routerLink="/new-survey">New Survey</button>
+      </div>
+
+      <img class="check-icon" src="assets/check.png" alt="" />
     </div>
+  </header>
 
-    <img
-      class="check-icon"
-      src="assets/check.png"
-      alt=""
-    />
-  </div>
-</header>
+  <main class="surveys-section">
+    <h2>Your Surveys</h2>
 
-<main class="surveys-section">
-  <h2>Your Surveys</h2>
+    <section class="ending-soon">
+      <p>Ending soon surveys</p>
+      <p></p>
 
-  <section class="ending-soon">
-    <p>Ending soon surveys<p>
+      <div class="survey-list">
+        <article class="survey-card">
+          <div class="survey-card-icon">
+            <p>A</p>
+          </div>
 
-    <div class="survey-list">
-      <article class="survey-card">
-        <div class="survey-card-icon">
-          <p>A</p>
-        </div>
+          <div class="survey-card-content">
+            <p>Survey title</p>
+            <p>Ends in 2 days</p>
+          </div>
 
-        <div class="survey-card-content">
-          <p>Survey title</p>
-          <p>Ends in 2 days</p>
-        </div>
+          <div class="survey-card-actions">
+            <!-- Survey actions go here -->
+          </div>
+        </article>
+      </div>
+    </section>
 
-        <div class="survey-card-actions">
-          <!-- Survey actions go here -->
-        </div>
-      </article>
-    </div>
-  </section>
+    <section class="all-surveys">
+      <p>All surveys</p>
 
-  <section class="all-surveys">
-    <p>All surveys</p>
-
-    <div class="survey-list">
-      <!-- More survey cards go here -->
-    </div>
-  </section>
-</main>
+      <div class="survey-list">
+        <!-- More survey cards go here -->
+      </div>
+    </section>
+  </main>
+</div>
