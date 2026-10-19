@@ -95,3 +95,16 @@ label {
     width: 20px;
     height: 20px;
 }
+
+.add-answer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.add-answer img {
+  width: 20px;
+  height: 20px;
+}
