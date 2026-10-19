@@ -1,110 +1,111 @@
+
 h3 {
-    color: #EE9236;
+  color: #EE9236;
 }
 
 .survey-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 40px;
-}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
 
-.header-title {
+  .header-title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
 
-.header-title img {
-    width: 38px;
-    height: 38px;
-}
+    img {
+      width: 38px;
+      height: 38px;
+    }
 
-.header-title h3 {
-    margin: 0;
-}
+    h3 {
+      margin: 0;
+    }
+  }
 
-.header-actions {
+  .header-actions {
     display: flex;
     align-items: center;
     gap: 6px;
     background-color: #72524A;
     padding: 4px 4px;
     border-radius: 10px;
-}
 
-.header-actions button {
-    border: none;
-    background-color: transparent;
-    color: white;
+    button {
+      border: none;
+      background-color: transparent;
+      color: white;
+    }
+  }
 }
 
 .survey-form {
-    background-color: #433349;
-    display: flex;
-    justify-content: space-around;
-}
-
-label {
-    color: white;
-}
-
-.form-field {
-    display: flex;
-    flex-direction: column;
-}
-
-.input-row {
-    display: flex;
-    align-items: center;
-}
-
-.survey-details {
-    padding-bottom: 40px;
-}
-
-.answer-row {
-    padding-bottom: 40px;
-}
-
-.question-description {
-    gap: 100px;
-}
-
-.form-field-right {
-    padding-bottom: 60px;
-}
-
-.survey-form-actions {
-    display: flex;
-    flex-direction: column;
-      width: 70%;
-}
-
-.add-question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: #72524A;
-    border: none;
-    padding: 6px ;
-}
-
-.add-question img {
-    width: 20px;
-    height: 20px;
-}
-
-.add-answer {
+  background-color: #433349;
   display: flex;
-  align-items: center;
-  width: 100%;
-  text-decoration: none;
-  gap: 10px;
-}
+  justify-content: space-around;
 
-.add-answer img {
-  width: 20px;
-  height: 20px;
+  label {
+    color: white;
+  }
+
+  .survey-details {
+    padding-bottom: 40px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+
+    .input-row {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .answer-row {
+    padding-bottom: 40px;
+  }
+
+  .question-description {
+    gap: 100px;
+
+    .form-field-right {
+      padding-bottom: 60px;
+    }
+  }
+
+  .survey-form-actions {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    .add-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background-color: #72524A;
+      border: none;
+      padding: 6px;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .add-answer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    gap: 10px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
