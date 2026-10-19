@@ -1,66 +1,86 @@
-<div>
-  <h3>Create new survey</h3>
-  <div>
-    <img src="assets/close.svg" alt="" />
-    <button>Cancel</button>
+
+<header class="survey-header">
+  <h1>Create new survey</h1>
+
+  <div class="header-actions">
+    <button type="button" aria-label="Close">
+      <img src="assets/close.svg" alt="" />
+    </button>
+
+    <button type="button">Cancel</button>
   </div>
-</div>
-<section>
-  <div>
-    <p>Survey name</p>
-    <div>
-      <input type="text" />
-      <img src="assets/delete.svg" alt="" />
+</header>
+
+<main class="survey-form">
+  <section class="survey-details">
+    <div class="form-field">
+      <label for="survey-name">Survey name</label>
+      <input id="survey-name" type="text" />
     </div>
-  </div>
-  <div>
-    <p>Set end date (optional)</p>
-    <div>
-      <input type="text" />
-      <img src="assets/delete.svg" alt="" />
+
+    <div class="form-field">
+      <label for="end-date">Set end date (optional)</label>
+      <input id="end-date" type="date" />
     </div>
-  </div>
-  <div>
-    <div>
-      <p>1.Qestion</p>
-      <img src="assets/delete.svg" alt="" />
+  </section>
+
+  <section class="question-card">
+    <div class="question-header">
+      <h2>Question 1</h2>
+      <button type="button" aria-label="Delete question">
+        <img src="assets/delete.svg" alt="" />
+      </button>
     </div>
-    <div>
-      <input type="text" value="Which date would work best for you?" />
+
+    <div class="form-field">
+      <label for="question-text">Question</label>
+      <input
+        id="question-text"
+        type="text"
+        value="Which date would work best for you?"
+      />
     </div>
-  </div>
-  <div>
-    <div>
-      <p>Answers</p>
-      <div>
-        <img src="assets/check_box.svg" alt="" />
-        <p>Allow multiple answers.</p>
+
+    <div class="answers-section">
+      <h3>Answers</h3>
+
+      <label class="checkbox-container">
+        <input type="checkbox" />
+        <span>Allow multiple answers</span>
+      </label>
+
+      <div class="answer-row">
+        <label for="answer-a">A.</label>
+        <input id="answer-a" type="text" />
+        <button type="button" aria-label="Delete answer A">
+          <img src="assets/delete.svg" alt="" />
+        </button>
       </div>
+
+      <div class="answer-row">
+        <label for="answer-b">B.</label>
+        <input id="answer-b" type="text" />
+        <button type="button" aria-label="Delete answer B">
+          <img src="assets/delete.svg" alt="" />
+        </button>
+      </div>
+
+      <button type="button" class="add-answer">
+        <img src="assets/add_circle.svg" alt="" />
+        Add answer
+      </button>
     </div>
-    <div>
-      <p>A.</p>
-      <input type="text" name="" id="" />
-      <img src="assets/delete.svg" alt="" />
+  </section>
+
+  <section class="question-description">
+    <div class="form-field">
+      <label for="description">Description (optional)</label>
+      <input id="description" type="text" />
     </div>
-    <div>
-      <p>B.</p>
-      <input type="text" name="" id="" />
-      <img src="assets/delete.svg" alt="" />
-    </div>
-    <div>
-     <a href="">Add answer</a>
-     <img src="assets/add_circle.svg" alt="">
-    </div>
-  </div>
-</section>
-<section>
-    <p>Describing text (optional)</p>
-    <div>
-        <input type="text">
-        <img src="assets/delete.svg" alt="">
-    </div>
-    <div>
-        <button>Add next question</button>
-        <img src="assets/add_circle.svg" alt="">
-    </div>
-</section>
+
+    <button type="button" class="add-question">
+      <img src="assets/add_circle.svg" alt="" />
+      Add next question
+    </button>
+  </section>
+</main>
