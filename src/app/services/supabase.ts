@@ -16,13 +16,9 @@ export class Supabase {
   }[]>([]);
 
   async getSurveys() {
-     console.log('Supabase URL:', this.supabase.supabaseUrl);
     const { data, error } = await this.supabase
       .from('surveys')
       .select('*');
-
-    console.log('Supabase data:', data);
-    console.log('Supabase error:', error);
 
     if (error) {
       console.error('Fehler beim Laden der Umfragen:', error);
