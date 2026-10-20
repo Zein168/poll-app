@@ -1,7 +1,7 @@
 <div class="dashboard-page">
   <header class="dashboard-header">
     <nav class="header-content">
-        <img src="assets/menu.svg" alt="" />
+      <img src="assets/menu.svg" alt="" />
       <p class="logo">Poll<br />App</p>
     </nav>
 
@@ -26,16 +26,16 @@
 
     <section class="ending-soon">
       <p>Ending soon surveys</p>
-      <p></p>
 
-      <div class="survey-list">
+      @for (survey of supabase.surveys(); track survey.id) {
         <article class="survey-card">
-          <div class="survey-card-icon">
-            <p>A</p>
-          </div>
+          <h3>{{ survey.title }}</h3>
 
+          @if (survey.end_date) {
+            <p>Ends on: {{ survey.end_date}}</p>
+          }
         </article>
-      </div>
+      }
     </section>
   </main>
 </div>
