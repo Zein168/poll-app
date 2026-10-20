@@ -1,8 +1,9 @@
-
 .dashboard-page {
-  background-color: #35273A;
-  min-height: 100vh;
+    background-color: #35273A;
+    min-height: 100vh;
+    padding: 16px 16px;
 }
+
 .header {
     display: flex;
     flex-direction: column;
@@ -42,6 +43,8 @@ h1 {
     background: #FFCFA1;
     color: #221227;
     border: none;
+    padding: 6px 6px;
+    border-radius: 6px;
 }
 
 .header-main {
@@ -60,4 +63,13 @@ h1 {
 
 h2 {
     color: #FFB770;
+    text-align: center;
 }
+
+.ending-soon p {
+    color: white;
+    padding-left: 200px;
+    padding-right: 200px;
+
+}
+
