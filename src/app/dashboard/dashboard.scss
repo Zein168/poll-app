@@ -67,32 +67,38 @@ h2 {
 }
 
 .survey-list {
-  display: flex;
-  flex-wrap: wrap;
-   justify-content: flex-start;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .survey-card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  width: 250px;
-  min-height: 150px;
-  box-sizing: border-box;
-  border: 1px solid #E6E4E6;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 20px;
+    width: 240px;
+    height: 240px;
+    min-height: 150px;
+    box-sizing: border-box;
+    border: 1px solid #E6E4E6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
     align-items: flex-start;
-  gap: 10px;
+    border-radius: 0 80px 0 0;
 
-  
 
-.survey-card h3,
-.survey-card p {
-  width: 100%;
-  margin: 0;
-  text-align: left;
+
+    .survey-card h3,
+    .survey-card p {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+    }
 }
+
+
+.ending-soon {
+    padding-left: 120px;
+    padding-right: 120px;
 }
