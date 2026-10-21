@@ -27,4 +27,29 @@ export class Supabase {
 
     this.surveys.set(data ?? []);
   }
+
+  questions = signal<{
+    id: number;
+    survey_id: number;
+    question_text: string;
+    question_type: string;
+    position: number;
+  }[]>([]);
+
+  async getQuestions(surveyId: number) {
+    const { data, error } = await this.supabase
+      .from('questions')
+      .select('*');
+
+    console.log('Survey ID:', surveyId);
+    console.log('Alle lesbaren Fragen:', data);
+    console.log('Fehler:', error);
+
+    if (error) {
+      console.error('Fehler beim Laden der Fragen:', error);
+      return;
+    }
+
+    this.questions.set(data ?? []);
+  }
 }

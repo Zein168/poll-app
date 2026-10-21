@@ -6,3 +6,14 @@
 
   <button class="create-survey-button" type="button" routerLink="/new-survey">Create survey</button>
 </header>
+<section class="questions">
+  <h2>Questions</h2>
+
+  @for (question of supabase.questions(); track question.id) {
+    <article class="question-card">
+      <h3>{{ question.question_text }}</h3>
+    </article>
+  } @empty {
+    <p>No questions found for this survey.</p>
+  }
+</section>
