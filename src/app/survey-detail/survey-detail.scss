@@ -1,0 +1,43 @@
+.survey-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.header-content img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.header-content p {
+    text-align: center;
+    color: #35273A;
+    font-weight: 700;
+
+}
+
+.header-content .logo {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    transform: translateY(-5px);
+}
+
+.create-survey-button {
+    background-color: #FFCFA1;
+    border: none;
+    color: #221227;
+    padding: 2px 8px;
+    height: 24px;
+    line-height: 1;
+    font-size: 16px;
+    box-sizing: border-box;
+}
