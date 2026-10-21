@@ -39,11 +39,9 @@ export class Supabase {
   async getQuestions(surveyId: number) {
     const { data, error } = await this.supabase
       .from('questions')
-      .select('*');
-
-    console.log('Survey ID:', surveyId);
-    console.log('Alle lesbaren Fragen:', data);
-    console.log('Fehler:', error);
+      .select('*')
+      .eq('survey_id', surveyId)
+      .order('position', { ascending: true });
 
     if (error) {
       console.error('Fehler beim Laden der Fragen:', error);
