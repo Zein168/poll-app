@@ -13,6 +13,7 @@ export class Supabase {
     created_at: string;
     end_date: string | null;
     status: string;
+    categories: string | null;
   }[]>([]);
 
   async getSurveys() {

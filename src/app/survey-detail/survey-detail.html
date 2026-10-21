@@ -18,13 +18,13 @@
       <p>Category</p>
     </div>
     <div>
-      @for (question of supabase.questions(); track question.id) {
+      @if (survey) {
         <article class="question-card">
           <h2>{{ survey?.title }}</h2>
-          <p>{{ question.question_text }}</p>
+          <p>{{ survey?.description }}</p>
         </article>
-      } @empty {
-        <p>No questions found for this survey.</p>
+      } @else {
+        <p>Umfrage wird geladen oder wurde nicht gefunden.</p>
       }
     </div>
   </section>

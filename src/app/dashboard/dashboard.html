@@ -29,7 +29,7 @@
       <div class="survey-list">
         @for (survey of supabase.surveys(); track survey.id) {
           <article class="survey-card" [routerLink]="['/survey', survey.id]">
-            <h3>{{ survey.title }}</h3>
+            <h3>{{ survey.categories }}</h3>
             <p>{{survey.description}}</p>
 
             @if (survey.end_date) {
