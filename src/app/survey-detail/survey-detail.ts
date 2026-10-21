@@ -8,15 +8,37 @@ import { Supabase } from '../services/supabase';
   templateUrl: './survey-detail.html',
   styleUrl: './survey-detail.scss',
 })
-export class SurveyDetail implements OnInit { 
-    supabase = inject(Supabase);
+export class SurveyDetail implements OnInit {
+  supabase = inject(Supabase);
   route = inject(ActivatedRoute);
 
-  ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+  survey: {
+    id: number;
+    title: string;
+    description: string | null;
+    end_date: string | null;
+    status: string;
+    created_at: string;
+  } | null = null;
 
+  async ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     if (Number.isInteger(id) && id > 0) {
       this.supabase.getQuestions(id);
+
+      const { data, error } = await this.supabase.supabase
+        .from('surveys')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      if (error) {
+        console.error('Fehler beim Laden der Umfrage:', error);
+        return;
+      }
+
+      this.survey = data;
+      console.log('Geladene Umfrage:', this.survey);
     }
   }
 }

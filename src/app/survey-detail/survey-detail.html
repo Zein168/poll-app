@@ -6,14 +6,28 @@
 
   <button class="create-survey-button" type="button" routerLink="/new-survey">Create survey</button>
 </header>
-<section class="questions">
-  <h2>Questions</h2>
 
-  @for (question of supabase.questions(); track question.id) {
-    <article class="question-card">
-      <h3>{{ question.question_text }}</h3>
-    </article>
-  } @empty {
-    <p>No questions found for this survey.</p>
-  }
-</section>
+<main>
+  <section>
+    <img src="assets/published.svg" alt="" />
+    <div class="survey-meta">
+      <div class="survey-meta-item">
+        <p>Ends on</p>
+        <p>{{ survey?.end_date }}</p>
+      </div>
+      <p>Category</p>
+    </div>
+    <div>
+      @for (question of supabase.questions(); track question.id) {
+        <article class="question-card">
+           <h2>{{ survey?.title }}</h2>
+          <h3>{{ question.question_text }}</h3>
+        </article>
+      } @empty {
+        <p>No questions found for this survey.</p>
+      }
+    </div>
+  </section>
+  <section></section>
+</main>
+
