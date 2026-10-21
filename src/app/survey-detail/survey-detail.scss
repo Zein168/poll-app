@@ -49,4 +49,24 @@
 
 section h2 {
     color: #EE9236;
+    text-align: center;
+}
+
+.question-card p {
+    text-align: center;
+}
+
+.card-section{
+    background-color: #F3EFF5;
+}
+
+.details-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.servey-results {
+    background-color: #221227;
+    width: 300px;
+    height: 300px;
 }
