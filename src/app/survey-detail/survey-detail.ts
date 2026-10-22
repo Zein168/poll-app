@@ -12,7 +12,7 @@ export class SurveyDetail implements OnInit {
   supabase = inject(Supabase);
   route = inject(ActivatedRoute);
 
-  survey= signal< {
+  survey = signal<{
     id: number;
     title: string;
     description: string | null;
@@ -20,12 +20,12 @@ export class SurveyDetail implements OnInit {
     status: string;
     created_at: string;
     categories: string | null;
-  } | null > (null);
+  } | null>(null);
 
   async ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (Number.isInteger(id) && id > 0) {
-      this.supabase.getQuestions(id);
+     await this.supabase.getQuestions(id);
 
       const { data, error } = await this.supabase.supabase
         .from('surveys')
@@ -39,8 +39,6 @@ export class SurveyDetail implements OnInit {
       }
 
       this.survey.set(data);
-      console.log('Kategorie:', data.categorie);
-console.log('Alle Umfragedaten:', data);
     }
   }
 }
