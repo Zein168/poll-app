@@ -13,15 +13,15 @@
     <div class="survey-meta">
       <div class="survey-meta-item">
         <p>Ends on</p>
-        <p>{{ survey?.end_date }}</p>
+        <p>{{ survey()?.end_date }}</p>
       </div>
       <p>Category</p>
     </div>
     <div>
-      @if (survey) {
+      @if (survey()) {
         <article class="question-card">
-          <h2>{{ survey?.title }}</h2>
-          <p>{{ survey?.description }}</p>
+          <h2>{{ survey()?.title }}</h2>
+          <p>{{ survey()?.description }}</p>
         </article>
       } @else {
         <p>Umfrage wird geladen oder wurde nicht gefunden.</p>

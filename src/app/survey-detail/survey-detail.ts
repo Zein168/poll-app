@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Supabase } from '../services/supabase';
 
@@ -12,14 +12,15 @@ export class SurveyDetail implements OnInit {
   supabase = inject(Supabase);
   route = inject(ActivatedRoute);
 
-  survey: {
+  survey= signal< {
     id: number;
     title: string;
     description: string | null;
     end_date: string | null;
     status: string;
     created_at: string;
-  } | null = null;
+    categorie: string | null;
+  } | null > (null);
 
   async ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -37,8 +38,7 @@ export class SurveyDetail implements OnInit {
         return;
       }
 
-      this.survey = data;
-      console.log('Geladene Umfrage:', this.survey);
+      this.survey.set(data);
     }
   }
 }
