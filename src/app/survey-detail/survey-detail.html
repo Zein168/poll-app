@@ -15,7 +15,8 @@
         <p>Ends on</p>
         <p>{{ survey()?.end_date }}</p>
       </div>
-      <p>Category</p>
+      <p>Category:</p>
+      <p>{{ survey()?.categories }}</p>
     </div>
     <div>
       @if (survey()) {
@@ -26,6 +27,9 @@
       } @else {
         <p>Umfrage wird geladen oder wurde nicht gefunden.</p>
       }
+    </div>
+    <div class="questions">
+      
     </div>
   </section>
   <section class="servey-results"></section>

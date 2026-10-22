@@ -19,7 +19,7 @@ export class SurveyDetail implements OnInit {
     end_date: string | null;
     status: string;
     created_at: string;
-    categorie: string | null;
+    categories: string | null;
   } | null > (null);
 
   async ngOnInit() {
@@ -39,6 +39,8 @@ export class SurveyDetail implements OnInit {
       }
 
       this.survey.set(data);
+      console.log('Kategorie:', data.categorie);
+console.log('Alle Umfragedaten:', data);
     }
   }
 }
