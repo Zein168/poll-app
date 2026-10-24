@@ -21,7 +21,7 @@
     <div>
       @if (survey()) {
         <article class="">
-          <h2>{{ survey()?.title }}</h2>
+          <h2>{{ survey()?.description }}</h2>
           <p>
             We want to create team activities that everyone will enjoy – share your preferences and
             ideas in our survey to help us plan better experiences together.
@@ -31,24 +31,27 @@
         <p>Umfrage wird geladen oder wurde nicht gefunden.</p>
       }
     </div>
-<div class="questions">
-  @for (question of supabase.questions(); track question.id; let i = $index) {
-    <article class="question-card">
-      <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
+    <div class="questions">
+      @for (question of supabase.questions(); track question.id; let i = $index) {
+        <article class="question-card">
+          <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
 
-      <div class="answers">
-        @for (
-          answer of supabase.answers().filter(a => a.question_id === question.id);
-          track answer.id
-        ) {
-          <article class="answers-card">
-            <p>{{ answer.answer_text }}</p>
-          </article>
-        }
-      </div>
-    </article>
-  }
-</div>
+          <div class="answers">
+            @for (
+              answer of supabase.answers().filter((a) => a.question_id === question.id);
+              track answer.id
+            ) {
+              <article class="answers-card">
+                <p>{{ answer.answer_text }}</p>
+              </article>
+            }
+          </div>
+        </article>
+      }
+    </div>
+    <div class="complete-container">
+      <button class="complete-button">Complete survey</button>
+    </div>
   </section>
   <section class="servey-results"></section>
 </main>
