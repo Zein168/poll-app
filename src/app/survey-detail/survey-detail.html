@@ -15,8 +15,10 @@
         <p>Ends on</p>
         <p>{{ survey()?.end_date }}</p>
       </div>
-      <p>Category:</p>
-      <p>{{ survey()?.categories }}</p>
+      <div class="survey-meta-item">
+        <p>Category:</p>
+        <p>{{ survey()?.categories }}</p>
+      </div>
     </div>
     <div>
       @if (survey()) {
