@@ -1,21 +1,21 @@
-<header class="survey-detail-header">
-  <div class="header-content">
+<header class="survey-detail__header">
+  <div class="survey-detail__header-content">
     <img src="assets/menu_2.svg" alt="" />
     <p class="logo">Poll<br />App</p>
   </div>
 
-  <button class="create-survey-button" type="button" routerLink="/new-survey">Create survey</button>
+  <button class="button--create-survey" type="button" routerLink="/new-survey">Create survey</button>
 </header>
 
-<main class="details-main">
-  <section class="card-section">
+<main class="survey-detail__layout">
+  <section class="survey-detail__content">
     <img src="assets/published.svg" alt="" />
-    <div class="survey-meta">
-      <div class="survey-meta-item">
+    <div class="survey-detail__meta">
+      <div class="survey-detail__meta-item">
         <p>Ends on</p>
         <p>{{ survey()?.end_date }}</p>
       </div>
-      <div class="survey-meta-item">
+      <div class="survey-detail__meta-item">
         <p>Category:</p>
         <p>{{ survey()?.categories }}</p>
       </div>
@@ -23,7 +23,7 @@
     <div>
       @if (survey()) {
         <article class="">
-          <h2>{{ survey()?.description }}</h2>
+          <h2 class="survey-detail__h2">{{ survey()?.description }}</h2>
           <p>
             We want to create team activities that everyone will enjoy – share your preferences and
             ideas in our survey to help us plan better experiences together.
@@ -33,17 +33,17 @@
         <p>Umfrage wird geladen oder wurde nicht gefunden.</p>
       }
     </div>
-    <div class="questions">
+    <div class="survey-questions">
       @for (question of supabase.questions(); track question.id; let i = $index) {
-        <article class="question-card">
+        <article class="survey-question">
           <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
 
-          <div class="answers">
+          <div class="survey-question__answers">
             @for (
               answer of supabase.answers().filter((a) => a.question_id === question.id);
               track answer.id
             ) {
-              <article class="answers-card">
+              <article class="survey-answer">
                 <p>{{ answer.answer_text }}</p>
               </article>
             }
@@ -51,8 +51,8 @@
         </article>
       }
     </div>
-    <div class="complete-container">
-      <button class="complete-button">Complete survey</button>
+    <div class="survey-detail__actions">
+      <button class="button--complete-survey">Complete survey</button>
     </div>
   </section>
   <section class="servey-results"></section>
