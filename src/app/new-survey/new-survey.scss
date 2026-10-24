@@ -1,14 +1,15 @@
+
 h3 {
   color: #EE9236;
 }
 
-.survey-header {
+.new-survey__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 40px;
 
-  .header-title {
+  .new-survey__header-title {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -23,12 +24,12 @@ h3 {
     }
   }
 
-  .header-actions {
+  .new-survey__header-actions {
     display: flex;
     align-items: center;
     gap: 6px;
     background-color: #72524A;
-    padding: 4px 4px;
+    padding: 4px;
     border-radius: 10px;
 
     button {
@@ -39,49 +40,49 @@ h3 {
   }
 }
 
-.survey-form {
+.new-survey__form {
   background-color: #433349;
   display: flex;
   justify-content: space-between;
   border-radius: 0 100px 0 0;
-  padding: 60px 60px;
+  padding: 60px;
 
   label {
     color: white;
   }
 
-  .survey-details {
+  .new-survey__details {
     padding-bottom: 40px;
   }
 
-  .form-field {
+  .new-survey__field {
     display: flex;
     flex-direction: column;
 
-    .input-row {
+    .new-survey__input-row {
       display: flex;
       align-items: center;
     }
   }
 
-  .answer-row {
+  .new-survey__answer-row {
     padding-bottom: 40px;
   }
 
-  .question-description {
+  .new-survey__description {
     gap: 100px;
 
-    .form-field-right {
+    .new-survey__field--right {
       padding-bottom: 60px;
     }
   }
 
-  .survey-form-actions {
+  .new-survey__actions {
     display: flex;
     flex-direction: column;
     width: 70%;
 
-    .add-question {
+    .new-survey__add-question {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -97,7 +98,7 @@ h3 {
     }
   }
 
-  .add-answer {
+  .new-survey__add-answer {
     display: flex;
     align-items: center;
     width: 100%;
@@ -111,7 +112,7 @@ h3 {
   }
 }
 
-.new-survey-page {
+.new-survey {
   background-color: #35273A;
   min-height: 100vh;
   border: 100px solid white;
@@ -119,11 +120,11 @@ h3 {
   border-radius: 0 200px 0 0;
 }
 
-.survey-page-body {
-  padding: 60px 60px;
+.new-survey__body {
+  padding: 60px;
 }
 
-.publish-button {
+.new-survey__publish-button {
   display: block;
   margin-left: auto;
   margin-right: 0;
