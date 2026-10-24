@@ -60,11 +60,28 @@ export class Supabase {
     created_at: string;
   }[]>([]);
 
-  async getAnswers(questionId: number) {
+  async getAnswersForSurvey(surveyId: number) {
+    const { data: questions, error: questionsError } = await this.supabase
+      .from('questions')
+      .select('id')
+      .eq('survey_id', surveyId);
+
+    if (questionsError) {
+      console.error('Fehler beim Laden der Fragen-IDs:', questionsError);
+      return;
+    }
+
+    const questionIds = (questions ?? []).map(question => question.id);
+
+    if (questionIds.length === 0) {
+      this.answers.set([]);
+      return;
+    }
+
     const { data, error } = await this.supabase
       .from('answers')
       .select('*')
-      .eq('question_id', questionId)
+      .in('question_id', questionIds)
       .order('created_at', { ascending: true });
 
     if (error) {

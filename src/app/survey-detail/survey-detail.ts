@@ -26,7 +26,7 @@ export class SurveyDetail implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (Number.isInteger(id) && id > 0) {
      await this.supabase.getQuestions(id);
-     await this.supabase.getAnswers(1);
+     await this.supabase.getAnswersForSurvey(id);
 
       const { data, error } = await this.supabase.supabase
         .from('surveys')
