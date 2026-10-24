@@ -6,6 +6,7 @@ import { createClient } from '@supabase/supabase-js'
 })
 export class Supabase {
   supabase = createClient('https://jsncgqhbmuzfqpwvrjec.supabase.co', 'sb_publishable_uzVEn8WT2zeIBUyuCs-OqQ_T-inzyq_')
+
   surveys = signal<{
     id: string;
     title: string;
@@ -50,5 +51,27 @@ export class Supabase {
     }
 
     this.questions.set(data ?? []);
+  }
+
+  answers = signal<{
+    id: number;
+    question_id: number;
+    answer_text: string;
+    created_at: string;
+  }[]>([]);
+
+  async getAnswers(questionId: number) {
+    const { data, error } = await this.supabase
+      .from('answers')
+      .select('*')
+      .eq('question_id', questionId)
+      .order('created_at', { ascending: true });
+
+    if (error) {
+      console.error('Fehler beim Laden der Antworten:', error);
+      return;
+    }
+
+    this.answers.set(data ?? []);
   }
 }

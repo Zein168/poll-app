@@ -22,7 +22,10 @@
       @if (survey()) {
         <article class="">
           <h2>{{ survey()?.title }}</h2>
-          <p>We want to create team activities that everyone will enjoy – share your preferences and ideas in our survey to help us plan better experiences together.</p>
+          <p>
+            We want to create team activities that everyone will enjoy – share your preferences and
+            ideas in our survey to help us plan better experiences together.
+          </p>
         </article>
       } @else {
         <p>Umfrage wird geladen oder wurde nicht gefunden.</p>
@@ -32,6 +35,13 @@
       @for (question of supabase.questions(); track question.id; let i = $index) {
         <article class="question-card">
           <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
+        </article>
+      }
+    </div>
+    <div class="answers">
+      @for (answer of supabase.answers(); track answer.id) {
+        <article class="answers-card">
+          <p>{{ answer.answer_text }}</p>
         </article>
       }
     </div>
