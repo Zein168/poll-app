@@ -49,6 +49,7 @@ h3 {
 
   label {
     color: white;
+    padding-bottom: 8px;
   }
 
   .new-survey__details {
@@ -58,7 +59,7 @@ h3 {
   .new-survey__field {
     display: flex;
     flex-direction: column;
-   
+
 
     .new-survey__input-row {
       display: flex;
@@ -68,6 +69,9 @@ h3 {
   }
 
   .new-survey__answer-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     padding-bottom: 6px;
   }
 
@@ -164,7 +168,7 @@ h3 {
 }
 
 .new-survey__input--answer {
-  width: 300px;
+  width: 360px;
 }
 
 .new-survey__input--description {
@@ -200,4 +204,23 @@ h3 {
 
 .new-survey__date-label {
   margin-top: 20px;
+}
+
+.new-survey__answer-settings {
+  display: flex;
+  align-items: center;
+
+  p {
+    color: white;
+    padding-bottom: 8px;
+  }
+}
+
+.new-survey__checkbox {
+  display: flex;
+  align-items: center;
+  width: 360px;
+  box-sizing: border-box;
+   justify-content: flex-end;
+  text-align: right;
 }
