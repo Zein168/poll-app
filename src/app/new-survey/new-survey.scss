@@ -88,8 +88,7 @@ h3 {
   .new-survey__actions {
     display: flex;
     flex-direction: column;
-    width: 300px;
-    flex: 0 0 300px;
+
 
     .new-survey__add-question {
       display: flex;
@@ -99,7 +98,10 @@ h3 {
       box-sizing: border-box;
       background-color: #72524A;
       border: none;
-      padding: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: white;
+      gap: 10px;
 
       img {
         width: 20px;
@@ -181,6 +183,7 @@ h3 {
 
 .new-survey__input--description {
   width: 400px;
+  height: 120px;
   flex: 0 0 400px;
 }
 
