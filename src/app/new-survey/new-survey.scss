@@ -146,15 +146,18 @@ h3 {
 }
 
 .new-survey__input--name {
-  width: 400px;
+  width: 440px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .new-survey__input--date {
-  width: 220px;
+  width: 240px;
 }
 
 .new-survey__input--question {
-  width: 500px;
+  width: 440px;
+   box-sizing: border-box;
 }
 
 .new-survey__input--answer {
@@ -181,4 +184,12 @@ h3 {
     font-size: 16px;
     cursor: pointer;
   }
+}
+
+.new-survey__field-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 440px;
+  box-sizing: border-box;
 }
