@@ -21,16 +21,38 @@
           <div class="new-survey__field">
             <label for="survey-name">Survey name</label>
             <div class="new-survey__input-row">
-              <input class="new-survey__input new-survey__input--name" id="survey-name" type="text" />
+              <input
+                class="new-survey__input new-survey__input--name"
+                id="survey-name"
+                type="text"
+              />
               <img src="assets/delete.svg" alt="" />
             </div>
           </div>
 
-          <div class="new-survey__field">
-            <label for="end-date">Set end date (optional)</label>
-            <div class="new-survey__input-row">
-              <input class="new-survey__input new-survey__input--date" id="end-date" type="date" />
-              <img src="assets/delete.svg" alt="" />
+          <div class="new-survey__secondary-fields">
+            <div class="new-survey__field">
+              <label for="end-date">Set end date (optional)</label>
+              <div class="new-survey__input-row">
+                <input
+                  class="new-survey__input new-survey__input--date"
+                  id="end-date"
+                  type="date"
+                />
+                <img src="assets/delete.svg" alt="" />
+              </div>
+            </div>
+            <div class="new-survey__category-field">
+              <select id="category" name="category">
+                <option value="" disabled selected>Choose category</option>
+                <option value="all-survey">All Survey</option>
+                <option value="team-activities">Team Activities</option>
+                <option value="health-wellness">Health & Wellness</option>
+                <option value="gaming-entertainment">Gaming & Entertainment</option>
+                <option value="education-learning">Education & Learning</option>
+                <option value="lifestyle-preferences">Lifestyle & Preferences</option>
+                <option value="technology-innovation">Technology & Innovation</option>
+              </select>
             </div>
           </div>
         </section>
@@ -42,25 +64,38 @@
               <label for="question-text">1. Question</label>
               <img src="assets/delete.svg" alt="" />
             </div>
-            <input class="new-survey__input new-survey__input--question" id="question-text" type="text" value="Which date would work best for you?" />
+            <input
+              class="new-survey__input new-survey__input--question"
+              id="question-text"
+              type="text"
+              value="Which date would work best for you?"
+            />
           </div>
 
           <div class="new-survey__answers">
             <p>Answers</p>
 
             <label class="new-survey__checkbox">
-              <input  type="checkbox" />
+              <input type="checkbox" />
               <span>Allow multiple answers.</span>
             </label>
 
             <div class="new-survey__answer-row">
               <label for="answer-a">A.</label>
-              <input class="new-survey__input new-survey__input--answer" id="answer-a" type="text" />
+              <input
+                class="new-survey__input new-survey__input--answer"
+                id="answer-a"
+                type="text"
+              />
             </div>
 
             <div class="new-survey__answer-row">
               <label for="answer-b">B.</label>
-              <input class="new-survey__input new-survey__input--answer" id="answer-b" type="text" />
+              <input
+                class="new-survey__input new-survey__input--answer"
+                id="answer-b"
+                type="text"
+              />
             </div>
 
             <a class="new-survey__add-answer" href="#">
@@ -76,7 +111,11 @@
         <div class="new-survey__field new-survey__field--right">
           <label for="description">Description text (optional)</label>
           <div class="new-survey__input-row">
-            <input class="new-survey__input new-survey__input--description" id="description" type="text" />
+            <input
+              class="new-survey__input new-survey__input--description"
+              id="description"
+              type="text"
+            />
             <img src="assets/delete.svg" alt="" />
           </div>
         </div>

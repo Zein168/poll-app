@@ -82,8 +82,8 @@ h3 {
   .new-survey__actions {
     display: flex;
     flex-direction: column;
-     width: 300px;
-  flex: 0 0 300px;
+    width: 300px;
+    flex: 0 0 300px;
 
     .new-survey__add-question {
       display: flex;
@@ -164,4 +164,17 @@ h3 {
 .new-survey__input--description {
   width: 400px;
   flex: 0 0 400px;
+}
+
+.new-survey__secondary-fields {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.new-survey__category-field {
+  select {
+   width: 126px;
+   margin-top: 10px;
+  }
 }
