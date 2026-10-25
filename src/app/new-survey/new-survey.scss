@@ -5,6 +5,7 @@ h3 {
 .new-survey__header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-bottom: 40px;
 
   .new-survey__header-title {
@@ -69,7 +70,9 @@ h3 {
   }
 
   .new-survey__description {
-    gap: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     .new-survey__field--right {
       padding-bottom: 60px;
@@ -79,13 +82,15 @@ h3 {
   .new-survey__actions {
     display: flex;
     flex-direction: column;
-    width: 70%;
+     width: 300px;
+  flex: 0 0 300px;
 
     .new-survey__add-question {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      box-sizing: border-box;
       background-color: #72524A;
       border: none;
       padding: 6px;
@@ -132,4 +137,31 @@ h3 {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+
+.new-survey__input {
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.new-survey__input--name {
+  width: 350px;
+}
+
+.new-survey__input--date {
+  width: 220px;
+}
+
+.new-survey__input--question {
+  width: 500px;
+}
+
+.new-survey__input--answer {
+  width: 300px;
+}
+
+.new-survey__input--description {
+  width: 400px;
+  flex: 0 0 400px;
 }
