@@ -44,7 +44,7 @@ h3 {
   background-color: #433349;
   display: flex;
   justify-content: space-between;
-  border-radius: 0 100px 0 0;
+  border-radius: 5px 100px 5px 5px;
   padding: 60px;
 
   label {
@@ -122,12 +122,20 @@ h3 {
   }
 }
 
-.new-survey {
-  background-color: #35273A;
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  border: 100px solid white;
+}
+
+.new-survey {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #35273A;
   box-sizing: border-box;
-  border-radius: 0 200px 0 0;
+  border-radius: 5px 120px 5px 5px;
 }
 
 .new-survey__body {
@@ -221,6 +229,6 @@ h3 {
   align-items: center;
   width: 360px;
   box-sizing: border-box;
-   justify-content: flex-end;
+  justify-content: flex-end;
   text-align: right;
 }
