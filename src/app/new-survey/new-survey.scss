@@ -242,4 +242,13 @@ h3 {
   box-sizing: border-box;
   justify-content: flex-end;
   text-align: right;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+  }
 }
