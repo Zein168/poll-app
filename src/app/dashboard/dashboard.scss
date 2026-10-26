@@ -109,3 +109,9 @@ h2 {
   }
 }
 
+.dashboard__survey-controls {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 40px;
+  gap: 80px;
+}
