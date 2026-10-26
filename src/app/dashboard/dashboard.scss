@@ -113,7 +113,7 @@ h2 {
   display: flex;
   justify-content: space-evenly;
   padding-top: 40px;
-  gap: 80px;
+  gap: 20px;
 }
 
 .dashboard__survey-tab {
@@ -125,5 +125,21 @@ h2 {
 
 .dashboard__survey-tabs {
   display: flex;
-  gap: 12px; 
+  gap: 12px;
+}
+
+.dashboard__category-field {
+  background-color: transparent;
+
+  select {
+    background-color: transparent;
+    color: #E6E4E6;
+    border: none;
+    font-size: 16px;
+  }
+
+  option {
+    background-color: #35273A;
+    color: #E6E4E6;
+  }
 }
