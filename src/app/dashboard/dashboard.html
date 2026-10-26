@@ -14,7 +14,9 @@
           opinions, engage your audience, and turn feedback into action.
         </p>
 
-        <button class="dashboard__primary-button" type="button" routerLink="/new-survey">New Survey</button>
+        <button class="dashboard__primary-button" type="button" routerLink="/new-survey">
+          New Survey
+        </button>
       </div>
 
       <img class="dashboard__check-icon" src="assets/check.png" alt="" />
@@ -25,18 +27,20 @@
     <h2>Your Surveys</h2>
 
     <section class="dashboard__ending-soon">
-      <p>Ending soon surveys</p>
-      <div class="dashboard__survey-lis">
-        @for (survey of supabase.surveys(); track survey.id) {
-          <article class="dashboard__survey-card" [routerLink]="['/survey', survey.id]">
-            <h3>{{ survey.categories }}</h3>
-            <p>{{survey.description}}</p>
+      <div class="dashboard__ending-soon-content">
+        <p class="dashboard__ending-soon-title">Ending soon surveys</p>
+        <div class="dashboard__survey-list">
+          @for (survey of supabase.surveys(); track survey.id) {
+            <article class="dashboard__survey-card" [routerLink]="['/survey', survey.id]">
+              <h3>{{ survey.categories }}</h3>
+              <p>{{ survey.description }}</p>
 
-            @if (survey.end_date) {
-              <p>Ends on: {{ survey.end_date }}</p>
-            }
-          </article>
-        }
+              @if (survey.end_date) {
+                <p>Ends on: {{ survey.end_date }}</p>
+              }
+            </article>
+          }
+        </div>
       </div>
     </section>
   </main>

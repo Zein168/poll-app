@@ -1,4 +1,3 @@
-
 .dashboard {
   background-color: #35273A;
   min-height: 100vh;
@@ -73,8 +72,19 @@ h2 {
 .dashboard__survey-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 40px;
+}
+
+.dashboard__ending-soon-content {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.dashboard__ending-soon-title {
+  color: #E6E4E6;
+  margin: 0 0 20px;
 }
 
 .dashboard__survey-card {
@@ -99,12 +109,3 @@ h2 {
   }
 }
 
-.dashboard__ending-soon {
-  padding-left: 120px;
-  padding-right: 120px;
-}
-
-.dashboard__survey-lis {
-    display: flex;
-    justify-content: space-between;
-}
