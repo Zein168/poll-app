@@ -115,3 +115,15 @@ h2 {
   padding-top: 40px;
   gap: 80px;
 }
+
+.dashboard__survey-tab {
+  background-color: #FEE9D4;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.dashboard__survey-tabs {
+  display: flex;
+  gap: 12px; 
+}
