@@ -44,7 +44,6 @@
       </div>
     </section>
 
-   
     <section class="dashboard__all-surveys">
       <div class="dashboard__survey-controls">
         <div class="dashboard__survey-tabs">
@@ -68,9 +67,24 @@
           </select>
         </div>
       </div>
-
       <div class="dashboard__all-surveys-list">
-        <!-- Hier kommen später die gefilterten Surveys rein -->
+        @for (survey of supabase.surveys(); track survey.id) {
+          <article class="dashboard__all-survey-card" [routerLink]="['/survey', survey.id]">
+            <h3 class="dashboard__all-survey-card-title">
+              {{ survey.categories }}
+            </h3>
+
+            <p class="dashboard__all-survey-card-description">
+              {{ survey.description }}
+            </p>
+
+            @if (survey.end_date) {
+              <p class="dashboard__all-survey-card-date">Ends on: {{ survey.end_date }}</p>
+            }
+          </article>
+        } @empty {
+          <p class="dashboard__empty-message">No surveys available yet.</p>
+        }
       </div>
     </section>
   </main>
