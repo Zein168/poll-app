@@ -124,9 +124,9 @@ h2 {
 
 .dashboard__survey-controls {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   padding-top: 40px;
-  gap: 20px;
+  gap: 140px;
 }
 
 .dashboard__survey-tab {
@@ -159,7 +159,7 @@ h2 {
 
 .dashboard__all-surveys-list {
   display: grid;
-  grid-template-columns: repeat(2, 400px);
+  grid-template-columns: repeat(2, 490px);
   justify-content: center;
   gap: 10px;
   padding-top: 30px;
@@ -174,7 +174,7 @@ h2 {
   align-items: flex-start;
   border-radius: 0 80px 0 0;
   cursor: pointer;
-  width: 380px;
+  width: 486px;
   height: 100px;
   padding-left: 16px;
 
