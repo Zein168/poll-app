@@ -4,7 +4,9 @@
     <p class="logo">Poll<br />App</p>
   </div>
 
-  <button class="button--create-survey" type="button" routerLink="/new-survey">Create survey</button>
+  <button class="button--create-survey" type="button" routerLink="/new-survey">
+    Create survey
+  </button>
 </header>
 
 <main class="survey-detail__layout">
@@ -37,13 +39,21 @@
       @for (question of supabase.questions(); track question.id; let i = $index) {
         <article class="survey-question">
           <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
+          @if (i < 2) {
+            <p class="survey-question__hint">More than one answers are possible.</p>
+          }
 
           <div class="survey-question__answers">
             @for (
               answer of supabase.answers().filter((a) => a.question_id === question.id);
-              track answer.id
+              track answer.id;
+              let i = $index
             ) {
               <article class="survey-answer">
+                <span class="survey-answer__letter">
+                  {{ ['a.', 'b.', 'c.', 'd.'][i] }}
+                </span>
+
                 <p>{{ answer.answer_text }}</p>
               </article>
             }

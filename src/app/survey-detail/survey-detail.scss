@@ -31,11 +31,17 @@
     &__layout {
         display: flex;
         flex-direction: row;
+        align-items: stretch;
+        gap: 24px;
     }
 
     &__content {
+        flex: 2;
+        min-width: 0;
         background-color: #F3EFF5;
         border-radius: 5px 120px 5px 5px;
+         min-height: calc(100vh - 80px);
+        box-sizing: border-box;
     }
 
     &__actions {
@@ -44,6 +50,13 @@
     }
 
 }
+
+.servey-results {
+    flex: 1;
+    min-width: 0;
+}
+
+
 
 .button--create-survey {
     background-color: #FFCFA1;
@@ -77,11 +90,20 @@
     &__answers {
         display: flex;
         flex-direction: column;
+        padding: 16px;
     }
 }
 
 .survey-answer {
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    p {
+        margin: 0;
+        padding-bottom: 8px;
+    }
 }
 
 .button--complete-survey {
