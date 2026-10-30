@@ -1,8 +1,13 @@
 .survey-detail {
+    &__published-icon {
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+
     &__h2 {
         color: #EE9236;
-        text-align: center;
         font-size: 56px;
+        padding: 0 40px;
     }
 
     &__header {
@@ -20,8 +25,8 @@
 
     &__meta {
         display: flex;
-        justify-content: space-around;
-        gap: 200px;
+        justify-content: space-between;
+        padding: 0 40px;
     }
 
     &__meta-item {
@@ -51,8 +56,8 @@
     }
 
     &__description {
-        text-align: center;
         padding-bottom: 16px;
+        padding: 0 40px;
     }
 
 }
@@ -79,7 +84,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 350px));
     justify-content: center;
-    gap: 24px;
+    gap: 40px;
 }
 
 .survey-question {
