@@ -91,4 +91,53 @@ export class Supabase {
 
     this.answers.set(data ?? []);
   }
+
+  statistics = signal<{
+    question_id: number;
+    answer_id: number;
+    votes: number;
+  }[]>([]);
+
+  async getSurveyStatistics() {
+    const questionIds = this.questions().map(question => question.id);
+
+    if (questionIds.length === 0) {
+      this.statistics.set([]);
+      return;
+    }
+
+    const { data, error } = await this.supabase
+      .from('survey_statistics')
+      .select('*')
+      .in('question_id', questionIds);
+
+    if (error) {
+      console.error('Fehler beim Laden der Statistik:', error);
+      return;
+    }
+
+    this.statistics.set(data ?? []);
+  }
+
+  getTotalVotes(questionId: number): number {
+    return this.statistics()
+      .filter(item => item.question_id === questionId)
+      .reduce((total, item) => total + item.votes, 0);
+  }
+
+  getAnswerPercentage(questionId: number, answerId: number): number {
+    const answer = this.statistics().find(
+      item =>
+        item.question_id === questionId &&
+        item.answer_id === answerId
+    );
+
+    const total = this.getTotalVotes(questionId);
+
+    if (!answer || total === 0) {
+      return 0;
+    }
+
+    return Math.round((answer.votes / total) * 100);
+  }
 }

@@ -68,9 +68,36 @@
       <button class="button--complete-survey">Complete survey</button>
     </div>
   </section>
-  <section class="servey-results">
-    <div>
-      <p>Survey results LIVE</p>
+<div class="survey-results">
+  @for (question of supabase.questions(); track question.id) {
+    <div class="survey-results__question">
+
+      <!-- Fragetext anzeigen -->
+      <h3>{{ question.question_text }}</h3>
+
+      @for (
+        answer of supabase.answers().filter(
+          (a) => a.question_id === question.id
+        );
+        track answer.id;
+        let i = $index
+      ) {
+        <div class="survey-results__item">
+          <span>{{ ['A.', 'B.', 'C.', 'D.'][i] }}</span>
+
+          <div class="survey-results__bar">
+            <div
+              class="survey-results__bar-fill"
+              [style.width.%]="supabase.getAnswerPercentage(question.id, answer.id)"
+            ></div>
+          </div>
+
+          <span>
+            {{ supabase.getAnswerPercentage(question.id, answer.id) }}%
+          </span>
+        </div>
+      }
     </div>
-  </section>
+  }
+</div>
 </main>

@@ -27,6 +27,7 @@ export class SurveyDetail implements OnInit {
     if (Number.isInteger(id) && id > 0) {
      await this.supabase.getQuestions(id);
      await this.supabase.getAnswersForSurvey(id);
+     await this.supabase.getSurveyStatistics();
 
       const { data, error } = await this.supabase.supabase
         .from('surveys')
