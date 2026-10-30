@@ -50,11 +50,14 @@
               let i = $index
             ) {
               <article class="survey-answer">
-                <span class="survey-answer__letter">
-                  {{ ['a.', 'b.', 'c.', 'd.'][i] }}
-                </span>
+                <input type="checkbox" [id]="'answer-' + answer.id" [value]="answer.id" />
 
-                <p>{{ answer.answer_text }}</p>
+                <label [for]="'answer-' + answer.id">
+                  <span class="survey-answer__letter">
+                    {{ ['A.', 'B.', 'C.', 'D.'][i] }}
+                  </span>
+                  {{ answer.answer_text }}
+                </label>
               </article>
             }
           </div>

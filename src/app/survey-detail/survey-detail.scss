@@ -98,24 +98,24 @@
 
     p {
         margin: 0;
+        padding-bottom: 10px;
+    padding-left: 16px;
     }
 
     &__answers {
         display: flex;
         flex-direction: column;
-        padding: 16px;
     }
 }
 
 .survey-answer {
-    border-radius: 8px;
     display: flex;
-    align-items: center;
-    gap: 12px;
+    align-items: start;
+    gap: 4px;
+    padding-bottom: 8px;
 
     p {
         margin: 0;
-        padding-bottom: 8px;
     }
 }
 
@@ -124,4 +124,5 @@
     color: #35273A;
     border: none;
     padding: 10px 10px;
+    margin-right: 40px;
 }
