@@ -90,7 +90,11 @@
                 <p>Answers</p>
 
                 <label class="new-survey__checkbox">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    [checked]="question.allowMultipleAnswers"
+                    (change)="updateMultipleAnswers(question.id, $any($event.target).checked)"
+                  />
                   <span>Allow multiple answers.</span>
                 </label>
               </div>

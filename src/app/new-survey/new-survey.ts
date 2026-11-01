@@ -10,6 +10,7 @@ interface SurveyQuestion {
   id: number;
   text: string;
   answers: SurveyAnswer[];
+  allowMultipleAnswers: boolean;
 }
 
 @Component({
@@ -25,11 +26,11 @@ export class NewSurvey {
   description = signal('');
   endDate = signal('');
   category = signal('');
-
   questions = signal<SurveyQuestion[]>([
     {
       id: 1,
       text: 'Which date would work best for you?',
+      allowMultipleAnswers: false,
       answers: [
         { id: 1, text: '' },
         { id: 2, text: '' },
@@ -61,6 +62,7 @@ export class NewSurvey {
       {
         id: this.nextId++,
         text: '',
+        allowMultipleAnswers: false,
         answers: [
           { id: this.nextId++, text: '' },
           { id: this.nextId++, text: '' },
@@ -96,9 +98,17 @@ export class NewSurvey {
     );
   }
 
+  updateMultipleAnswers(questionId: number, checked: boolean) {
+    this.questions.update(questions =>
+      questions.map(question =>
+        question.id === questionId
+          ? { ...question, allowMultipleAnswers: checked }
+          : question
+      )
+    );
+  }
 
   async publishSurvey() {
-    // Eingaben prüfen
     if (!this.surveyTitle().trim()) {
       alert('Please enter a survey name.');
       return;
@@ -149,7 +159,10 @@ export class NewSurvey {
           .insert({
             survey_id: survey.id,
             question_text: question.text.trim(),
-            question_type: 'single_choice',
+            question_type: question.allowMultipleAnswers
+              ? 'multiple_choice'
+              : 'single_choice',
+            allow_multiple_answers: question.allowMultipleAnswers,
             position: i + 1,
           })
           .select('id')
