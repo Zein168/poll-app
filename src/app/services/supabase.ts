@@ -36,6 +36,7 @@ export class Supabase {
     question_text: string;
     question_type: string;
     position: number;
+    allow_multiple_answers: boolean;
   }[]>([]);
 
   async getQuestions(surveyId: number) {

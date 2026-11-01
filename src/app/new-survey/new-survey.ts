@@ -1,5 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { Supabase } from '../services/supabase';
+import { Router } from '@angular/router';
 
 interface SurveyAnswer {
   id: number;
@@ -21,6 +22,7 @@ interface SurveyQuestion {
 })
 export class NewSurvey {
   supabase = inject(Supabase);
+  router = inject(Router);
 
   surveyTitle = signal('');
   description = signal('');
@@ -190,7 +192,7 @@ export class NewSurvey {
       }
     }
 
-    alert('Survey successfully published!');
+    await this.router.navigate(['/survey', survey.id]);
   }
 
 }

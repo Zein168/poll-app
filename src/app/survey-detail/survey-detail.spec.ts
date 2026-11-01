@@ -20,3 +20,4 @@ describe('SurveyDetail', () => {
     expect(component).toBeTruthy();
   });
 });
+
