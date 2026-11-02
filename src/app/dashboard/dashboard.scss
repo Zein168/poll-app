@@ -50,8 +50,34 @@ h1 {
   background: #FFCFA1;
   color: #221227;
   border: none;
-  padding: 6px;
-  border-radius: 6px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 120px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  transform-origin: left;
+  cursor: pointer;
+}
+
+.dashboard__primary-button-icon {
+  width: 0;
+  height: 22px;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.dashboard__primary-button:hover {
+  width: 175px;
+  background-color: #FFB770;
+
+  .dashboard__primary-button-icon {
+    width: 22px;
+    opacity: 1;
+  }
 }
 
 .dashboard__header-main {
