@@ -63,6 +63,8 @@ h1 {
 .dashboard__check-icon {
   width: 420px;
   height: 420px;
+  position: relative;
+  z-index: 2;
 }
 
 // Section 2
@@ -199,4 +201,42 @@ h2 {
 
 .dashboard__all-survey-card-date {
   color: #FFCFA1;
+}
+
+//ashboard__check-wrapper//
+.dashboard__check-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+
+.dashboard__icon {
+  position: absolute;
+  width: 35px;
+}
+
+.dashboard__icon--message {
+  top: 80px;
+  left: 90px;
+  z-index: 3;
+}
+
+.dashboard__icon--questionmark {
+  top: 20px;
+  right: 60px;
+  z-index: 3;
+}
+
+.dashboard__icon--star {
+  bottom: 40px;
+  left: 90px;
+  z-index: 3;
+}
+
+.dashboard__icon--arrow {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  z-index: 1;
 }
