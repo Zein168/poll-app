@@ -16,8 +16,8 @@
         </p>
 
         <button class="dashboard__primary-button" type="button" routerLink="/new-survey">
-           <span>New Survey</span>
-           <img class="dashboard__primary-button-icon" src="assets/add_circle_black.svg" alt="" />
+          <span>New Survey</span>
+          <img class="dashboard__primary-button-icon" src="assets/add_circle_black.svg" alt="" />
         </button>
       </div>
       <div class="dashboard__check-wrapper">
@@ -45,9 +45,18 @@
             <article class="dashboard__survey-card" [routerLink]="['/survey', survey.id]">
               <h3>{{ survey.categories }}</h3>
               <p>{{ survey.description }}</p>
-
               @if (survey.end_date) {
-                <p class="dashboard__survey-card-date">Ends on: {{ survey.end_date }}</p>
+                <p class="dashboard__survey-card-date">
+                  @if (getDaysUntil(survey.end_date) === 0) {
+                    Ends today
+                  } @else if (getDaysUntil(survey.end_date) === 1) {
+                    Ends in: 1 day
+                  } @else if (getDaysUntil(survey.end_date) > 1) {
+                    Ends in: {{ getDaysUntil(survey.end_date) }} days
+                  } @else {
+                    Survey ended
+                  }
+                </p>
               }
             </article>
           }
