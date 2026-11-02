@@ -50,9 +50,9 @@
                   @if (getDaysUntil(survey.end_date) === 0) {
                     Ends today
                   } @else if (getDaysUntil(survey.end_date) === 1) {
-                    Ends in: 1 day
+                    Ends in 1 day
                   } @else if (getDaysUntil(survey.end_date) > 1) {
-                    Ends in: {{ getDaysUntil(survey.end_date) }} days
+                    Ends in {{ getDaysUntil(survey.end_date) }} days
                   } @else {
                     Survey ended
                   }
