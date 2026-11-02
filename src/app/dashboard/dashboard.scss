@@ -180,11 +180,13 @@ h2 {
     color: #E6E4E6;
     border: none;
     font-size: 16px;
+    outline: none;
+    box-shadow: none;
   }
 
   option {
-    background-color: #35273A;
-    color: #E6E4E6;
+    background-color: #E6E4E6;
+    color: #35273A;
   }
 }
 
