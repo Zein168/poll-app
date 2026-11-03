@@ -41,4 +41,27 @@ export class Dashboard implements OnInit {
       return this.activeTab === 'active' ? days >= 0 : days < 0;
     });
   }
+
+  categoryDropdownOpen = false;
+
+  selectedCategory = 'Sort by categories';
+
+  categories = [
+    'All Surveys',
+    'Team Activities',
+    'Health & Wellness',
+    'Gaming & Entertainment',
+    'Education & Learning',
+    'Lifestyle & Preferences',
+    'Technology & Innovation',
+  ];
+
+  toggleCategoryDropdown() {
+    this.categoryDropdownOpen = !this.categoryDropdownOpen;
+  }
+
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+    this.categoryDropdownOpen = false;
+  }
 }

@@ -85,18 +85,35 @@
             Past Surveys
           </button>
         </div>
-
         <div class="dashboard__category-field">
-          <select id="survey-category" name="survey-category">
-            <option value="" disabled selected hidden>Sort by categories</option>
-            <option value="all-survey">All Surveys</option>
-            <option value="team-activities">Team Activities</option>
-            <option value="health-wellness">Health & Wellness</option>
-            <option value="gaming-entertainment">Gaming & Entertainment</option>
-            <option value="education-learning">Education & Learning</option>
-            <option value="lifestyle-preferences">Lifestyle & Preferences</option>
-            <option value="technology-innovation">Technology & Innovation</option>
-          </select>
+          <button
+            class="dashboard__category-button"
+            type="button"
+            (click)="toggleCategoryDropdown()"
+          >
+            {{ selectedCategory }}
+
+            <span
+              class="dashboard__category-arrow"
+              [class.dashboard__category-arrow--open]="categoryDropdownOpen"
+            >
+              ▼
+            </span>
+          </button>
+
+          @if (categoryDropdownOpen) {
+            <div class="dashboard__category-options">
+              @for (category of categories; track category) {
+                <button
+                  class="dashboard__category-option"
+                  type="button"
+                  (click)="selectCategory(category)"
+                >
+                  {{ category }}
+                </button>
+              }
+            </div>
+          }
         </div>
       </div>
       <div class="dashboard__all-surveys-list">

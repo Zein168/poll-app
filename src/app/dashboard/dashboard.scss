@@ -187,20 +187,60 @@ h2 {
 }
 
 .dashboard__category-field {
+  position: relative;
+  width: 220px;
+}
+
+.dashboard__category-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   background-color: transparent;
+  color: #E6E4E6;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px;
+}
 
-  select {
-    background-color: transparent;
-    color: #E6E4E6;
-    border: none;
-    font-size: 16px;
-    outline: none;
-    box-shadow: none;
+.dashboard__category-arrow {
+  transition: transform 0.2s ease;
+
+  &--open {
+    transform: rotate(180deg);
   }
+}
 
-  option {
-    background-color: #E6E4E6;
-    color: #35273A;
+.dashboard__category-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #E6E4E6;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.dashboard__category-option {
+  background-color: transparent;
+  color: #35273A;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFCFA1;
   }
 }
 
