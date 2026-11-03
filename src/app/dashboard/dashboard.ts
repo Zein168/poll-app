@@ -27,4 +27,18 @@ export class Dashboard implements OnInit {
       (end.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
     );
   }
+
+  activeTab: 'active' | 'past' = 'active';
+
+  get filteredSurveys() {
+    return this.supabase.surveys().filter((survey) => {
+      if (!survey.end_date) {
+        return this.activeTab === 'active';
+      }
+
+      const days = this.getDaysUntil(survey.end_date);
+
+      return this.activeTab === 'active' ? days >= 0 : days < 0;
+    });
+  }
 }

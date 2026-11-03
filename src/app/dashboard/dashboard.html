@@ -67,11 +67,23 @@
     <section class="dashboard__all-surveys">
       <div class="dashboard__survey-controls">
         <div class="dashboard__survey-tabs">
-          <button class="dashboard__survey-tab dashboard__survey-tab--active" type="button">
+          <button
+            class="dashboard__survey-tab dashboard__survey-tab--active"
+            [class.dashboard__survey-tab--active]="activeTab === 'active'"
+            (click)="activeTab = 'active'"
+            type="button"
+          >
             Active Surveys
           </button>
 
-          <button class="dashboard__survey-tab" type="button">Past Surveys</button>
+          <button
+            class="dashboard__survey-tab"
+            [class.dashboard__survey-tab--active]="activeTab === 'past'"
+            (click)="activeTab = 'past'"
+            type="button"
+          >
+            Past Surveys
+          </button>
         </div>
 
         <div class="dashboard__category-field">
@@ -88,7 +100,7 @@
         </div>
       </div>
       <div class="dashboard__all-surveys-list">
-        @for (survey of supabase.surveys(); track survey.id) {
+        @for (survey of filteredSurveys; track survey.id) {
           <article class="dashboard__all-survey-card" [routerLink]="['/survey', survey.id]">
             <h3 class="dashboard__all-survey-card-title">
               {{ survey.categories }}
