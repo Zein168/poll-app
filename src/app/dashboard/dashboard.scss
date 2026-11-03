@@ -168,8 +168,17 @@ h2 {
 .dashboard__survey-tab {
   background-color: #FEE9D4;
   border: none;
-  border-radius: 6px;
+  border-radius: 18px;
   padding: 6px 10px;
+  cursor: pointer;
+
+  &:not(&--active):hover {
+    background-color: #FFCFA1;
+  }
+
+  &--active {
+    background-color: #FFB770;
+  }
 }
 
 .dashboard__survey-tabs {
