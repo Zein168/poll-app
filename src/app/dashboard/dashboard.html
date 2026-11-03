@@ -99,7 +99,17 @@
             </p>
 
             @if (survey.end_date) {
-              <p class="dashboard__all-survey-card-date">Ends on: {{ survey.end_date }}</p>
+              <p class="dashboard__all-survey-card-date">
+                @if (getDaysUntil(survey.end_date) === 0) {
+                  Ends today
+                } @else if (getDaysUntil(survey.end_date) === 1) {
+                  Ends in 1 day
+                } @else if (getDaysUntil(survey.end_date) > 1) {
+                  Ends in {{ getDaysUntil(survey.end_date) }} days
+                } @else {
+                  Survey ended
+                }
+              </p>
             }
           </article>
         } @empty {
