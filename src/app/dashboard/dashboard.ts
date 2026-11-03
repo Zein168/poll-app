@@ -64,4 +64,6 @@ export class Dashboard implements OnInit {
     this.selectedCategory = category;
     this.categoryDropdownOpen = false;
   }
+
+  categoryDropdownHovered = false;
 }

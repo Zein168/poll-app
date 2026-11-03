@@ -90,15 +90,24 @@
             class="dashboard__category-button"
             type="button"
             (click)="toggleCategoryDropdown()"
+            (mouseenter)="categoryDropdownHovered = true"
+            (mouseleave)="categoryDropdownHovered = false"
           >
             {{ selectedCategory }}
 
-            <span
+            <img
+              [src]="
+                categoryDropdownOpen
+                  ? categoryDropdownHovered
+                    ? 'assets/arrow_drop_up_orange.svg'
+                    : 'assets/arrow_drop_up.svg'
+                  : categoryDropdownHovered
+                    ? 'assets/arrow_drop_down_orange.svg'
+                    : 'assets/arrow_drop_down.svg'
+              "
+              alt=""
               class="dashboard__category-arrow"
-              [class.dashboard__category-arrow--open]="categoryDropdownOpen"
-            >
-              ▼
-            </span>
+            />
           </button>
 
           @if (categoryDropdownOpen) {

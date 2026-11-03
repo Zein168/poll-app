@@ -192,24 +192,29 @@ h2 {
 }
 
 .dashboard__category-button {
-  width: 100%;
+  gap: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: transparent;
   color: #E6E4E6;
   border: none;
   font-size: 16px;
   cursor: pointer;
   padding: 8px;
-}
+  min-height: 40px;
 
-.dashboard__category-arrow {
-  transition: transform 0.2s ease;
+  &:hover {
+    background-color: #493C4D;
+    border-radius: 10px;
 
-  &--open {
-    transform: rotate(180deg);
+    .dashboard__category-arrow {
+      width: 24px;
+      height: 24px;
+      display: block;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
   }
 }
 
@@ -218,7 +223,6 @@ h2 {
   top: calc(100% + 8px);
   right: 0;
   width: 100%;
-
   display: flex;
   flex-direction: column;
 
