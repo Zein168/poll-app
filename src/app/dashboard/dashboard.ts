@@ -32,14 +32,25 @@ export class Dashboard implements OnInit {
 
   get filteredSurveys() {
     return this.supabase.surveys().filter((survey) => {
-      if (!survey.end_date) {
-        return this.activeTab === 'active';
-      }
-
+        if (!survey.end_date) {
+      if (this.activeTab === 'past') return false;
+    } else {
       const days = this.getDaysUntil(survey.end_date);
 
-      return this.activeTab === 'active' ? days >= 0 : days < 0;
-    });
+      if (this.activeTab === 'active' && days < 0) return false;
+      if (this.activeTab === 'past' && days >= 0) return false;
+    }
+
+    if (
+      this.selectedCategory !== 'Sort by categories' &&
+      this.selectedCategory !== 'All Surveys' &&
+      survey.categories !== this.selectedCategory
+    ) {
+      return false;
+    }
+
+    return true;
+  });
   }
 
   categoryDropdownOpen = false;
