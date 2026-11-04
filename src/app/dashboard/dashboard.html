@@ -41,7 +41,7 @@
       <div class="dashboard__ending-soon-content">
         <p class="dashboard__ending-soon-title">Ending soon surveys</p>
         <div class="dashboard__survey-list">
-          @for (survey of supabase.surveys(); track survey.id) {
+          @for (survey of endingSoonSurveys; track survey.id) {
             <article class="dashboard__survey-card" [routerLink]="['/survey', survey.id]">
               <h3>{{ survey.categories }}</h3>
               <p>{{ survey.description }}</p>

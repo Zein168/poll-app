@@ -77,4 +77,14 @@ export class Dashboard implements OnInit {
   }
 
   categoryDropdownHovered = false;
+
+  get endingSoonSurveys() {
+  return this.supabase.surveys().filter((survey) => {
+    if (!survey.end_date) return false;
+
+    const days = this.getDaysUntil(survey.end_date);
+
+    return days >= 0 && days <= 7;
+  });
+}
 }
