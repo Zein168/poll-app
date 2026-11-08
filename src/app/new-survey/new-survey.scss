@@ -77,6 +77,8 @@ h3 {
     align-items: center;
     gap: 6px;
     padding-bottom: 6px;
+    width: 440px;
+    box-sizing: border-box;
   }
 
   .new-survey__description {
@@ -139,9 +141,7 @@ h3 {
   }
 }
 
-.new-survey__form:has(
-  .new-survey__question-card + .new-survey__question-card
-) .new-survey__actions {
+.new-survey__form:has(.new-survey__question-card + .new-survey__question-card) .new-survey__actions {
   grid-column: 1;
 }
 
@@ -194,7 +194,7 @@ h3 {
 }
 
 .new-survey__input--question {
-  width: 100%;
+  width: 440px;
   box-sizing: border-box;
 }
 
@@ -270,7 +270,6 @@ h3 {
   grid-column: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 80px;
   row-gap: 40px;
   min-width: 0;
 }
