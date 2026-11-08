@@ -64,13 +64,6 @@ h3 {
   .new-survey__field {
     display: flex;
     flex-direction: column;
-
-
-    .new-survey__input-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
   }
 
   .new-survey__answer-row {
@@ -290,4 +283,18 @@ h3 {
 
 .new-survey__delete-icon {
   padding-bottom: 4px;
+}
+
+
+
+.new-survey__input-row-survey-name,
+.new-survey__input-row-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.new-survey__input-row {
+  display: flex;
+  align-items: flex-start;
 }

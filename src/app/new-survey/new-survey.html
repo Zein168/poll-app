@@ -20,7 +20,7 @@
         <section class="new-survey__details">
           <div class="new-survey__field">
             <label for="survey-name">Survey name</label>
-            <div class="new-survey__input-row">
+            <div class="new-survey__input-row-survey-name">
               <input
                 class="new-survey__input new-survey__input--name"
                 id="survey-name"
@@ -35,7 +35,7 @@
           <div class="new-survey__secondary-fields">
             <div class="new-survey__field">
               <label class="new-survey__date-label" for="end-date">Set end date (optional)</label>
-              <div class="new-survey__input-row">
+              <div class="new-survey__input-row-date">
                 <input
                   class="new-survey__input new-survey__input--date"
                   id="end-date"
@@ -140,7 +140,7 @@
               [value]="description()"
               (input)="description.set($any($event.target).value)"
             />
-            <img src="assets/delete.svg" alt="" />
+            <img class="new-survey__delete-description" src="assets/delete.svg" alt="" />
           </div>
         </div>
       </section>
