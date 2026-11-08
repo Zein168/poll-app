@@ -96,8 +96,9 @@ h3 {
 
   .new-survey__actions {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
     width: 100%;
+    padding-top: 200px;
 
 
     .new-survey__add-question {
@@ -110,7 +111,8 @@ h3 {
       border-radius: 8px;
       color: white;
       gap: 10px;
-      margin-top: -260px;
+      margin-top: 0;
+
 
       img {
         width: 20px;
@@ -146,6 +148,8 @@ h3 {
 
 .new-survey__form:has(.new-survey__question-card + .new-survey__question-card) .new-survey__actions {
   grid-column: 1;
+  grid-row: 2;
+  padding-top: 0;
 }
 
 :host {
