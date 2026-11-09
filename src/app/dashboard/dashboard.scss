@@ -178,7 +178,7 @@ h2 {
   border-radius: 18px;
   padding: 6px 10px;
   cursor: pointer;
-  white-space: nowrap;  
+  white-space: nowrap;
 
   &:not(&--active):hover {
     background-color: #FFCFA1;
@@ -192,7 +192,7 @@ h2 {
 .dashboard__survey-tabs {
   display: flex;
   gap: 12px;
-   align-items: center;
+  align-items: center;
 }
 
 .dashboard__category-field {
@@ -201,7 +201,11 @@ h2 {
 }
 
 .dashboard__selected-category {
+  position: absolute;
+  top: 100%;
   color: #FFB770;
+  margin: 0;
+  padding: 0;
 }
 
 .dashboard__category-button {
