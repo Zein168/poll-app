@@ -93,7 +93,7 @@
             (mouseenter)="categoryDropdownHovered = true"
             (mouseleave)="categoryDropdownHovered = false"
           >
-            {{ selectedCategory }}
+             <span>Sort by categories</span>
 
             <img
               [src]="
@@ -122,6 +122,11 @@
                 </button>
               }
             </div>
+          }
+          @if (selectedCategory) {
+            <p class="dashboard__selected-category">
+              {{ selectedCategory }}
+            </p>
           }
         </div>
       </div>

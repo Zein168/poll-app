@@ -42,7 +42,7 @@ export class Dashboard implements OnInit {
     }
 
     if (
-      this.selectedCategory !== 'Sort by categories' &&
+      this.selectedCategory &&
       this.selectedCategory !== 'All Surveys' &&
       survey.categories !== this.selectedCategory
     ) {
@@ -55,7 +55,7 @@ export class Dashboard implements OnInit {
 
   categoryDropdownOpen = false;
 
-  selectedCategory = 'Sort by categories';
+  selectedCategory = '';
 
   categories = [
     'All Surveys',
