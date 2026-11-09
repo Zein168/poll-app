@@ -161,6 +161,7 @@ h2 {
 .dashboard__survey-controls {
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
   padding-top: 40px;
   gap: 140px;
 }
@@ -197,6 +198,10 @@ h2 {
 .dashboard__category-field {
   position: relative;
   width: 220px;
+}
+
+.dashboard__selected-category {
+  color: #FFB770;
 }
 
 .dashboard__category-button {
