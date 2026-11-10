@@ -84,6 +84,7 @@ h1 {
   display: flex;
   width: 100%;
   padding-top: 40px;
+  gap: 60px;
 }
 
 .dashboard__check-icon {
@@ -102,8 +103,8 @@ h2 {
 }
 
 .dashboard__survey-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
   justify-content: center;
   gap: 40px;
 }
@@ -163,13 +164,11 @@ h2 {
   justify-content: space-around;
   align-items: flex-start;
   padding-top: 40px;
-  gap: 140px;
+  gap: 100px;
 }
 
 .dashboard__survey-tab {
   box-sizing: border-box;
-  width: 140px;
-  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -197,7 +196,6 @@ h2 {
 
 .dashboard__category-field {
   position: relative;
-  width: 220px;
 }
 
 .dashboard__selected-category {
@@ -206,6 +204,7 @@ h2 {
   color: #FFB770;
   margin: 0;
   padding: 0;
+  padding-left: 10px;
 }
 
 .dashboard__category-button {
