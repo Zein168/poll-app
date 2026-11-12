@@ -195,4 +195,33 @@ export class NewSurvey {
     await this.router.navigate(['/survey', survey.id]);
   }
 
+
+  categoryDropdownOpen = false;
+  categoryDropdownHovered = false;
+
+  categories = [
+    { value: 'all-survey', label: 'All Survey' },
+    { value: 'team-activities', label: 'Team Activities' },
+    { value: 'health-wellness', label: 'Health & Wellness' },
+    { value: 'gaming-entertainment', label: 'Gaming & Entertainment' },
+    { value: 'education-learning', label: 'Education & Learning' },
+    { value: 'lifestyle-preferences', label: 'Lifestyle & Preferences' },
+    { value: 'technology-innovation', label: 'Technology & Innovation' },
+  ];
+
+  toggleCategoryDropdown() {
+    this.categoryDropdownOpen = !this.categoryDropdownOpen;
+  }
+
+  selectCategory(value: string) {
+    this.category.set(value);
+    this.categoryDropdownOpen = false;
+  }
+
+  getSelectedCategoryLabel(): string {
+    return this.categories.find(
+      item => item.value === this.category()
+    )?.label || '';
+  }
+
 }

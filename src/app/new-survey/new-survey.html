@@ -46,22 +46,50 @@
                 <img src="assets/delete.svg" alt="" />
               </div>
             </div>
+
             <div class="new-survey__category-field">
-              <select
-                id="category"
-                name="category"
-                [value]="category()"
-                (change)="category.set($any($event.target).value)"
+              <button
+                class="new-survey__category-button"
+                type="button"
+                (click)="toggleCategoryDropdown()"
+                (mouseenter)="categoryDropdownHovered = true"
+                (mouseleave)="categoryDropdownHovered = false"
               >
-                <option value="" disabled selected>Choose category</option>
-                <option value="all-survey">All Survey</option>
-                <option value="team-activities">Team Activities</option>
-                <option value="health-wellness">Health & Wellness</option>
-                <option value="gaming-entertainment">Gaming & Entertainment</option>
-                <option value="education-learning">Education & Learning</option>
-                <option value="lifestyle-preferences">Lifestyle & Preferences</option>
-                <option value="technology-innovation">Technology & Innovation</option>
-              </select>
+                <span>Choose category</span>
+
+                <img
+                  [src]="
+                    categoryDropdownOpen
+                      ? categoryDropdownHovered
+                        ? 'assets/arrow_drop_up_orange.svg'
+                        : 'assets/arrow_drop_up.svg'
+                      : categoryDropdownHovered
+                        ? 'assets/arrow_drop_down_orange.svg'
+                        : 'assets/arrow_drop_down.svg'
+                  "
+                  alt=""
+                  class="new-survey__category-arrow"
+                />
+              </button>
+
+              @if (categoryDropdownOpen) {
+                <div class="new-survey__category-options">
+                  @for (item of categories; track item.value) {
+                    <button
+                      class="new-survey__category-option"
+                      type="button"
+                      (click)="selectCategory(item.value)"
+                    >
+                      {{ item.label }}
+                    </button>
+                  }
+                </div>
+              }
+              @if (category()) {
+                <p class="new-survey__selected-category">
+                  {{ getSelectedCategoryLabel() }}
+                </p>
+              }
             </div>
           </div>
         </section>
