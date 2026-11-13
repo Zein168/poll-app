@@ -49,6 +49,7 @@ h3 {
   align-items: start;
   border-radius: 5px 100px 5px 5px;
   padding: 60px;
+  height: 500px;
 
   label {
     color: white;
@@ -92,6 +93,7 @@ h3 {
     grid-row: 1;
     width: 100%;
     padding-top: 200px;
+    box-sizing: border-box;
 
 
     .new-survey__add-question {
@@ -159,10 +161,12 @@ h3 {
   background-color: #35273A;
   box-sizing: border-box;
   border-radius: 5px 120px 5px 5px;
+
 }
 
 .new-survey__body {
   padding: 60px;
+    height: 780px;
 }
 
 .new-survey__publish-button {
@@ -323,12 +327,27 @@ h3 {
 
 .new-survey__left-container {
   grid-column: 1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 560px;
+  display: flex;
+  flex-direction: column;
   row-gap: 40px;
   min-width: 0;
+
 }
+
+.new-survey__questions-scroll {
+  width: 1000px;
+  height: 260px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 40px;
+  align-content: start;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
 
 .new-survey__question-card {
   min-width: 0;
