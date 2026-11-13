@@ -15,7 +15,7 @@
           and turn feedback into action.
         </p>
 
-        <button class="dashboard__primary-button" type="button" routerLink="/new-survey">
+        <button class="dashboard__primary-button" type="button" (click)="openSurveyOverlay()">
           <span>New Survey</span>
           <img class="dashboard__primary-button-icon" src="assets/add_circle_black.svg" alt="" />
         </button>
@@ -172,4 +172,13 @@
       </div>
     </section>
   </main>
+@if (showSurveyOverlay) {
+  <div class="survey-overlay" (click)="closeSurveyOverlay()">
+    <div class="survey-overlay__content">
+      <app-new-survey
+        (closeOverlay)="closeSurveyOverlay()"
+      ></app-new-survey>
+    </div>
+  </div>
+}
 </div>

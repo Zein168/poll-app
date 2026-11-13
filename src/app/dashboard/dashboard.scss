@@ -411,3 +411,23 @@ h2 {
     transform: translate(40px, 40px) rotate(15deg);
   }
 }
+
+// survey overlay //
+.survey-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.survey-overlay__content {
+  position: relative;
+  background: white;
+  width: 100%;
+  border-radius: 16px;
+  padding: 40px;
+}
+

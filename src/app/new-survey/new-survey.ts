@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, output } from '@angular/core';
 import { Supabase } from '../services/supabase';
 import { Router } from '@angular/router';
 
@@ -21,6 +21,7 @@ interface SurveyQuestion {
   styleUrl: './new-survey.scss',
 })
 export class NewSurvey {
+  closeOverlay = output<void>();
   supabase = inject(Supabase);
   router = inject(Router);
 
@@ -192,7 +193,7 @@ export class NewSurvey {
       }
     }
 
-    await this.router.navigate(['/survey', survey.id]);
+    this.closeOverlay.emit();
   }
 
 

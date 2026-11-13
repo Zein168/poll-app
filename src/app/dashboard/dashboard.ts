@@ -7,10 +7,11 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Supabase } from '../services/supabase';
+import { NewSurvey } from '../new-survey/new-survey';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink],
+  imports: [RouterLink, NewSurvey],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 
@@ -106,19 +107,19 @@ export class Dashboard implements OnInit, AfterViewInit {
   startY = 0;
   startScrollTop = 0;
 
- updateScrollbar() {
-  if (!this.surveyList || !this.scrollTrack) return;
+  updateScrollbar() {
+    if (!this.surveyList || !this.scrollTrack) return;
 
-  const list = this.surveyList.nativeElement;
-  const track = this.scrollTrack.nativeElement;
+    const list = this.surveyList.nativeElement;
+    const track = this.scrollTrack.nativeElement;
 
-  const maxScroll = list.scrollHeight - list.clientHeight;
-  const maxThumbTop = track.clientHeight - this.thumbHeight;
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const maxThumbTop = track.clientHeight - this.thumbHeight;
 
-  this.thumbTop = maxScroll > 0
-    ? (list.scrollTop / maxScroll) * maxThumbTop + 60
-    : 60;
-}
+    this.thumbTop = maxScroll > 0
+      ? (list.scrollTop / maxScroll) * maxThumbTop + 60
+      : 60;
+  }
 
   startDragging(event: PointerEvent) {
     if (!this.surveyList) return;
@@ -151,5 +152,15 @@ export class Dashboard implements OnInit, AfterViewInit {
   @HostListener('document:pointerup')
   stopDragging() {
     this.isDragging = false;
+  }
+
+  showSurveyOverlay = false;
+
+  openSurveyOverlay() {
+    this.showSurveyOverlay = true;
+  }
+
+  closeSurveyOverlay() {
+    this.showSurveyOverlay = false;
   }
 }

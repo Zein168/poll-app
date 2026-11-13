@@ -1,5 +1,5 @@
-<div class="new-survey">
-  <div class="new-survey__body">
+<div class="new-survey" (click)="closeOverlay.emit()">
+  <div class="new-survey__body" (click)="$event.stopPropagation()">
     <img src="assets/survey_status.svg" alt="" />
     <div class="new-survey__header">
       <div class="new-survey__header-title">
@@ -7,7 +7,7 @@
       </div>
 
       <div class="new-survey__header-actions">
-        <button type="button" aria-label="Cancel">
+        <button type="button" aria-label="Cancel" (click)="closeOverlay.emit()">
           <span>Cancel</span>
           <img src="assets/close.svg" alt="" />
         </button>
@@ -96,65 +96,65 @@
 
         <!-- Section 2 -->
         <div class="new-survey__questions-scroll">
-        @for (question of questions(); track question.id; let i = $index) {
-          <section class="new-survey__question-card">
-            <div class="new-survey__field">
-              <div class="new-survey__field-box">
-                <label [for]="'question-' + question.id"> {{ i + 1 }}. Question </label>
-                <img class="new-survey__delete-icon" src="assets/delete.svg" alt="" />
-              </div>
-
-              <input
-                class="new-survey__input new-survey__input--question"
-                [id]="'question-' + question.id"
-                type="text"
-                [value]="question.text"
-                (input)="updateQuestion(question.id, $any($event.target).value)"
-              />
-            </div>
-
-            <div class="new-survey__answers">
-              <div class="new-survey__answer-settings">
-                <p>Answers</p>
-
-                <label class="new-survey__checkbox">
-                  <input
-                    type="checkbox"
-                    [checked]="question.allowMultipleAnswers"
-                    (change)="updateMultipleAnswers(question.id, $any($event.target).checked)"
-                  />
-                  <span>Allow multiple answers.</span>
-                </label>
-              </div>
-
-              @for (answer of question.answers; track answer.id; let j = $index) {
-                <div class="new-survey__answer-row">
-                  <label [for]="'answer-' + answer.id">
-                    {{ ['A.', 'B.', 'C.', 'D.'][j] ?? j + 1 + '.' }}
-                  </label>
-
-                  <input
-                    class="new-survey__input new-survey__input--answer"
-                    [id]="'answer-' + answer.id"
-                    type="text"
-                    [value]="answer.text"
-                    (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
-                  />
-
-                  <img src="assets/delete.svg" alt="" />
+          @for (question of questions(); track question.id; let i = $index) {
+            <section class="new-survey__question-card">
+              <div class="new-survey__field">
+                <div class="new-survey__field-box">
+                  <label [for]="'question-' + question.id"> {{ i + 1 }}. Question </label>
+                  <img class="new-survey__delete-icon" src="assets/delete.svg" alt="" />
                 </div>
-              }
 
-              <div class="new-survey__add-answer">
-                <button type="button" (click)="addAnswer(question.id)">
-                  <span>Add answer</span>
-                  <img src="assets/add_circle.svg" alt="" />
-                </button>
+                <input
+                  class="new-survey__input new-survey__input--question"
+                  [id]="'question-' + question.id"
+                  type="text"
+                  [value]="question.text"
+                  (input)="updateQuestion(question.id, $any($event.target).value)"
+                />
               </div>
-            </div>
-          </section>
-        }
-      </div>
+
+              <div class="new-survey__answers">
+                <div class="new-survey__answer-settings">
+                  <p>Answers</p>
+
+                  <label class="new-survey__checkbox">
+                    <input
+                      type="checkbox"
+                      [checked]="question.allowMultipleAnswers"
+                      (change)="updateMultipleAnswers(question.id, $any($event.target).checked)"
+                    />
+                    <span>Allow multiple answers.</span>
+                  </label>
+                </div>
+
+                @for (answer of question.answers; track answer.id; let j = $index) {
+                  <div class="new-survey__answer-row">
+                    <label [for]="'answer-' + answer.id">
+                      {{ ['A.', 'B.', 'C.', 'D.'][j] ?? j + 1 + '.' }}
+                    </label>
+
+                    <input
+                      class="new-survey__input new-survey__input--answer"
+                      [id]="'answer-' + answer.id"
+                      type="text"
+                      [value]="answer.text"
+                      (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
+                    />
+
+                    <img src="assets/delete.svg" alt="" />
+                  </div>
+                }
+
+                <div class="new-survey__add-answer">
+                  <button type="button" (click)="addAnswer(question.id)">
+                    <span>Add answer</span>
+                    <img src="assets/add_circle.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+            </section>
+          }
+        </div>
       </div>
       <!-- Section 3 -->
       <section class="new-survey__description">
