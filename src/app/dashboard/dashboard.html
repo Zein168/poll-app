@@ -93,7 +93,7 @@
             (mouseenter)="categoryDropdownHovered = true"
             (mouseleave)="categoryDropdownHovered = false"
           >
-             <span>Sort by categories</span>
+            <span>Sort by categories</span>
 
             <img
               [src]="
@@ -130,34 +130,45 @@
           }
         </div>
       </div>
-      <div class="dashboard__all-surveys-list">
-        @for (survey of filteredSurveys; track survey.id) {
-          <article class="dashboard__all-survey-card" [routerLink]="['/survey', survey.id]">
-            <h3 class="dashboard__all-survey-card-title">
-              {{ survey.categories }}
-            </h3>
+      <div class="dashboard__all-surveys-wrapper">
+        <div class="dashboard__all-surveys-list" #surveyList (scroll)="updateScrollbar()">
+          @for (survey of filteredSurveys; track survey.id) {
+            <article class="dashboard__all-survey-card" [routerLink]="['/survey', survey.id]">
+              <h3 class="dashboard__all-survey-card-title">
+                {{ survey.categories }}
+              </h3>
 
-            <p class="dashboard__all-survey-card-description">
-              {{ survey.description }}
-            </p>
-
-            @if (survey.end_date) {
-              <p class="dashboard__all-survey-card-date">
-                @if (getDaysUntil(survey.end_date) === 0) {
-                  Ends today
-                } @else if (getDaysUntil(survey.end_date) === 1) {
-                  Ends in 1 day
-                } @else if (getDaysUntil(survey.end_date) > 1) {
-                  Ends in {{ getDaysUntil(survey.end_date) }} days
-                } @else {
-                  Survey ended
-                }
+              <p class="dashboard__all-survey-card-description">
+                {{ survey.description }}
               </p>
-            }
-          </article>
-        } @empty {
-          <p class="dashboard__empty-message">No surveys available yet.</p>
-        }
+
+              @if (survey.end_date) {
+                <p class="dashboard__all-survey-card-date">
+                  @if (getDaysUntil(survey.end_date) === 0) {
+                    Ends today
+                  } @else if (getDaysUntil(survey.end_date) === 1) {
+                    Ends in 1 day
+                  } @else if (getDaysUntil(survey.end_date) > 1) {
+                    Ends in {{ getDaysUntil(survey.end_date) }} days
+                  } @else {
+                    Survey ended
+                  }
+                </p>
+              }
+            </article>
+          } @empty {
+            <p class="dashboard__empty-message">No surveys available yet.</p>
+          }
+        </div>
+        <div class="dashboard__scroll-track" #scrollTrack>
+          <div
+            class="dashboard__scroll-thumb"
+            #scrollThumb
+            [style.top.px]="thumbTop"
+            [style.height.px]="thumbHeight"
+            (pointerdown)="startDragging($event)"
+          ></div>
+        </div>
       </div>
     </section>
   </main>

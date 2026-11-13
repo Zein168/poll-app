@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-inline: 220px;
 }
 
 .dashboard__header-content {
@@ -267,17 +266,45 @@ h2 {
   }
 }
 
+.dashboard__all-surveys-wrapper {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+
 .dashboard__all-surveys-list {
   display: grid;
   grid-template-columns: repeat(2, 490px);
-  grid-auto-rows: 140px;
   justify-content: center;
   gap: 16px;
   padding: 30px 0 20px;
-  box-sizing: border-box;
-  max-height: 502px;
+  max-height: 440px;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+.dashboard__scroll-track {
+  position: absolute;
+  right: -12px;
+  top: 30px;
+  bottom: 20px;
+  width: 4px;
+  height: 200px;
+}
+
+.dashboard__scroll-thumb {
+  position: absolute;
+  width: 4px;
+  height: 100px;
+  background: #FFB770;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .dashboard__all-surveys {
@@ -311,7 +338,6 @@ h2 {
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .dashboard__all-survey-card-date {

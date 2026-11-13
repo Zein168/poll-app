@@ -1,4 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  Component, OnInit, inject,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  AfterViewInit
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Supabase } from '../services/supabase';
 
@@ -9,11 +15,15 @@ import { Supabase } from '../services/supabase';
   styleUrl: './dashboard.scss',
 
 })
-export class Dashboard implements OnInit {
+export class Dashboard implements OnInit, AfterViewInit {
   supabase = inject(Supabase);
 
   ngOnInit() {
     this.supabase.getSurveys();
+  }
+
+  ngAfterViewInit() {
+    this.updateScrollbar();
   }
 
   getDaysUntil(endDate: string): number {
@@ -32,25 +42,25 @@ export class Dashboard implements OnInit {
 
   get filteredSurveys() {
     return this.supabase.surveys().filter((survey) => {
-        if (!survey.end_date) {
-      if (this.activeTab === 'past') return false;
-    } else {
-      const days = this.getDaysUntil(survey.end_date);
+      if (!survey.end_date) {
+        if (this.activeTab === 'past') return false;
+      } else {
+        const days = this.getDaysUntil(survey.end_date);
 
-      if (this.activeTab === 'active' && days < 0) return false;
-      if (this.activeTab === 'past' && days >= 0) return false;
-    }
+        if (this.activeTab === 'active' && days < 0) return false;
+        if (this.activeTab === 'past' && days >= 0) return false;
+      }
 
-    if (
-      this.selectedCategory &&
-      this.selectedCategory !== 'All Surveys' &&
-      survey.categories !== this.selectedCategory
-    ) {
-      return false;
-    }
+      if (
+        this.selectedCategory &&
+        this.selectedCategory !== 'All Surveys' &&
+        survey.categories !== this.selectedCategory
+      ) {
+        return false;
+      }
 
-    return true;
-  });
+      return true;
+    });
   }
 
   categoryDropdownOpen = false;
@@ -79,12 +89,67 @@ export class Dashboard implements OnInit {
   categoryDropdownHovered = false;
 
   get endingSoonSurveys() {
-  return this.supabase.surveys().filter((survey) => {
-    if (!survey.end_date) return false;
+    return this.supabase.surveys().filter((survey) => {
+      if (!survey.end_date) return false;
 
-    const days = this.getDaysUntil(survey.end_date);
+      const days = this.getDaysUntil(survey.end_date);
 
-    return days >= 0 && days <= 7;
-  });
+      return days >= 0 && days <= 7;
+    });
+  }
+  @ViewChild('surveyList') surveyList?: ElementRef<HTMLDivElement>;
+  @ViewChild('scrollTrack') scrollTrack?: ElementRef<HTMLDivElement>;
+
+  thumbTop = 60;
+  thumbHeight = 80;
+  isDragging = false;
+  startY = 0;
+  startScrollTop = 0;
+
+ updateScrollbar() {
+  if (!this.surveyList || !this.scrollTrack) return;
+
+  const list = this.surveyList.nativeElement;
+  const track = this.scrollTrack.nativeElement;
+
+  const maxScroll = list.scrollHeight - list.clientHeight;
+  const maxThumbTop = track.clientHeight - this.thumbHeight;
+
+  this.thumbTop = maxScroll > 0
+    ? (list.scrollTop / maxScroll) * maxThumbTop + 60
+    : 60;
 }
+
+  startDragging(event: PointerEvent) {
+    if (!this.surveyList) return;
+
+    this.isDragging = true;
+    this.startY = event.clientY;
+    this.startScrollTop = this.surveyList.nativeElement.scrollTop;
+
+    event.preventDefault();
+  }
+
+  @HostListener('document:pointermove', ['$event'])
+  onDrag(event: PointerEvent) {
+    if (!this.isDragging || !this.surveyList || !this.scrollTrack) return;
+
+    const list = this.surveyList.nativeElement;
+    const track = this.scrollTrack.nativeElement;
+
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const maxThumbTop = track.clientHeight - this.thumbHeight;
+
+    if (maxThumbTop <= 0 || maxScroll <= 0) return;
+
+    const delta = event.clientY - this.startY;
+
+    list.scrollTop = this.startScrollTop +
+      (delta / maxThumbTop) * maxScroll;
+  }
+
+  @HostListener('document:pointerup')
+  stopDragging() {
+    this.isDragging = false;
+  }
 }
