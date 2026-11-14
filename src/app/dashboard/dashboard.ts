@@ -114,7 +114,7 @@ export class Dashboard implements OnInit, AfterViewInit {
     const track = this.scrollTrack.nativeElement;
 
     const maxScroll = list.scrollHeight - list.clientHeight;
-    const thumbHeight = this.scrollThumb!.nativeElement.offsetHeight;
+    const thumbHeight = this.scrollThumb.nativeElement.offsetHeight;
     const maxThumbTop = track.clientHeight - thumbHeight;
 
     this.thumbTop = maxScroll > 0

@@ -16,6 +16,7 @@ interface SurveyQuestion {
 
 @Component({
   selector: 'app-new-survey',
+   standalone: true,
   imports: [],
   templateUrl: './new-survey.html',
   styleUrl: './new-survey.scss',
