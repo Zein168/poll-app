@@ -160,24 +160,24 @@
             <p class="dashboard__empty-message">No surveys available yet.</p>
           }
         </div>
-        <div class="dashboard__scroll-track" #scrollTrack>
-          <div
-            class="dashboard__scroll-thumb"
-            #scrollThumb
-            [style.top.px]="thumbTop"
-            (pointerdown)="startDragging($event)"
-          ></div>
-        </div>
+        @if (showScrollbar) {
+          <div class="dashboard__scroll-track" #scrollTrack>
+            <div
+              class="dashboard__scroll-thumb"
+              #scrollThumb
+              [style.top.px]="thumbTop"
+              (pointerdown)="startDragging($event)"
+            ></div>
+          </div>
+        }
       </div>
     </section>
   </main>
-@if (showSurveyOverlay) {
-  <div class="survey-overlay" (click)="closeSurveyOverlay()">
-    <div class="survey-overlay__content">
-      <app-new-survey
-        (closeOverlay)="closeSurveyOverlay()"
-      ></app-new-survey>
+  @if (showSurveyOverlay) {
+    <div class="survey-overlay" (click)="closeSurveyOverlay()">
+      <div class="survey-overlay__content">
+        <app-new-survey (closeOverlay)="closeSurveyOverlay()"></app-new-survey>
+      </div>
     </div>
-  </div>
-}
+  }
 </div>

@@ -165,4 +165,12 @@ export class Dashboard implements OnInit, AfterViewInit {
   closeSurveyOverlay() {
     this.showSurveyOverlay = false;
   }
+
+  get showScrollbar(): boolean {
+  if (!this.surveyList) return false;
+
+  const list = this.surveyList.nativeElement;
+
+  return list.scrollHeight > list.clientHeight;
+}
 }
