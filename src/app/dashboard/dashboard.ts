@@ -102,19 +102,20 @@ export class Dashboard implements OnInit, AfterViewInit {
   @ViewChild('scrollTrack') scrollTrack?: ElementRef<HTMLDivElement>;
 
   thumbTop = 60;
-  thumbHeight = 80;
   isDragging = false;
   startY = 0;
   startScrollTop = 0;
 
-  updateScrollbar() {
-    if (!this.surveyList || !this.scrollTrack) return;
 
+  @ViewChild('scrollThumb') scrollThumb?: ElementRef<HTMLDivElement>;
+  updateScrollbar() {
+    if (!this.surveyList || !this.scrollTrack || !this.scrollThumb) return;
     const list = this.surveyList.nativeElement;
     const track = this.scrollTrack.nativeElement;
 
     const maxScroll = list.scrollHeight - list.clientHeight;
-    const maxThumbTop = track.clientHeight - this.thumbHeight;
+    const thumbHeight = this.scrollThumb!.nativeElement.offsetHeight;
+    const maxThumbTop = track.clientHeight - thumbHeight;
 
     this.thumbTop = maxScroll > 0
       ? (list.scrollTop / maxScroll) * maxThumbTop + 60
@@ -137,9 +138,10 @@ export class Dashboard implements OnInit, AfterViewInit {
 
     const list = this.surveyList.nativeElement;
     const track = this.scrollTrack.nativeElement;
-
     const maxScroll = list.scrollHeight - list.clientHeight;
-    const maxThumbTop = track.clientHeight - this.thumbHeight;
+
+    const thumbHeight = this.scrollThumb!.nativeElement.offsetHeight;
+    const maxThumbTop = track.clientHeight - thumbHeight;
 
     if (maxThumbTop <= 0 || maxScroll <= 0) return;
 
