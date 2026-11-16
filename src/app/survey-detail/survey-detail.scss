@@ -6,8 +6,9 @@
 
     &__h2 {
         color: #EE9236;
-        font-size: 56px;
+        font-size: 46px;
         padding: 0 40px;
+        margin: 0;
     }
 
     &__header {
@@ -33,7 +34,7 @@
 
     &__meta-item {
         display: flex;
-        gap: 16px;
+        gap: 4px;
     }
 
     &__layout {
