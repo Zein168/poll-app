@@ -15,8 +15,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-left: 140px;
-        padding-right: 140px;
+        padding: 0 140px 40px;
     }
 
     &__header-content {
@@ -134,6 +133,7 @@
 
 .survey-results {
     width: 360px;
+    display: none;
 }
 
 .survey-results__item {

@@ -83,6 +83,12 @@
       </button>
     </div>
   </section>
+  <section>
+    <div class="survey-results__header">
+      <p>Survey results LIVE</p>
+      <p>Results will be shown here after participants complete the survey.</p>
+      <p>There are no answears yet.</p>
+    </div>
   <div class="survey-results">
     @for (question of supabase.questions(); track question.id) {
       <div class="survey-results__question">
@@ -110,4 +116,6 @@
       </div>
     }
   </div>
+  </section>
+
 </main>
