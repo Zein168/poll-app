@@ -54,8 +54,8 @@ export class SurveyDetail implements OnInit {
     allowMultiple: boolean
   ) {
     this.selectedAnswers.update(selected => {
-         const id = Number(questionId);
-    const answer = Number(answerId);
+      const id = Number(questionId);
+      const answer = Number(answerId);
       const currentAnswers = selected[questionId] ?? [];
 
       let newAnswers: number[];
@@ -78,8 +78,8 @@ export class SurveyDetail implements OnInit {
   async completeSurvey() {
     const questions = this.supabase.questions();
     const selected = this.selectedAnswers();
-     console.log('Questions:', questions);
-  console.log('Selected answers:', selected);
+    console.log('Questions:', questions);
+    console.log('Selected answers:', selected);
 
     // Prüfen, ob alle Fragen beantwortet wurden
     const unanswered = questions.some(
@@ -116,8 +116,14 @@ export class SurveyDetail implements OnInit {
 
     alert('Thank you! Your answers have been submitted.');
 
-    
+
     this.selectedAnswers.set({});
   }
 
+  formatDate(date: string | null): string {
+    if (!date) return '';
+
+    const [year, month, day] = date.split('T')[0].split('-');
+    return `${day}.${month}.${year}`;
+  }
 }

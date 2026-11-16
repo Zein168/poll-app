@@ -15,7 +15,7 @@
     <div class="survey-detail__meta">
       <div class="survey-detail__meta-item">
         <p>Ends on</p>
-        <p>{{ survey()?.end_date }}</p>
+        <p>{{ formatDate(survey()?.end_date ?? null) }}</p>
       </div>
       <div class="survey-detail__meta-item">
         <p>Category:</p>
