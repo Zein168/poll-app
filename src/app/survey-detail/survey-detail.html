@@ -19,7 +19,7 @@
       </div>
       <div class="survey-detail__meta-item">
         <p>Category:</p>
-        <p>{{ survey()?.categories }}</p>
+        <p>{{ formatCategory(survey()?.categories ?? null) }}</p>
       </div>
     </div>
     <div>

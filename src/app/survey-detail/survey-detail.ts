@@ -126,4 +126,13 @@ export class SurveyDetail implements OnInit {
     const [year, month, day] = date.split('T')[0].split('-');
     return `${day}.${month}.${year}`;
   }
+
+  formatCategory(category: string | null): string {
+    if (!category) return '';
+
+    return category
+      .split(/[-&]/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
 }
