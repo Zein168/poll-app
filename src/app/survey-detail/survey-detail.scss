@@ -163,6 +163,10 @@
 
 .survey-results__header {
     padding-top: 180px;
+
+    &.has-votes {
+        padding-top: 120px;
+    }
 }
 
 .survey-results__header {
@@ -171,6 +175,7 @@
         padding-bottom: 8px;
         font-size: 18px;
     }
+
 
     .survey-results__title {
         font-size: 24px;

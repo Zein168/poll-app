@@ -135,4 +135,8 @@ export class SurveyDetail implements OnInit {
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
   }
+
+  hasVotes(): boolean {
+    return this.supabase.statistics().some(item => item.votes > 0);
+  }
 }

@@ -84,13 +84,16 @@
     </div>
   </section>
   <section>
-    <div class="survey-results__header">
+    <div class="survey-results__header" [class.has-votes]="hasVotes()">
       <p class="survey-results__title">Survey results <span class="live">LIVE</span></p>
-      <p class="survey-results__description">
-        Results will be shown here after participants complete the survey.
-      </p>
-      <p class="survey-results__empty">There are no answears yet.</p>
+      @if (!hasVotes()) {
+        <p class="survey-results__description">
+          Results will be shown here after participants complete the survey.
+        </p>
+        <p class="survey-results__empty">There are no answears yet.</p>
+      }
     </div>
+
     <div class="survey-results">
       @for (question of supabase.questions(); track question.id) {
         <div class="survey-results__question">
