@@ -39,7 +39,7 @@ export class SurveyDetail implements OnInit {
         .single();
 
       if (error) {
-        console.error('Fehler beim Laden der Umfrage:', error);
+        console.error('error', error);
         return;
       }
 
@@ -78,10 +78,6 @@ export class SurveyDetail implements OnInit {
   async completeSurvey() {
     const questions = this.supabase.questions();
     const selected = this.selectedAnswers();
-    console.log('Questions:', questions);
-    console.log('Selected answers:', selected);
-
-    // Prüfen, ob alle Fragen beantwortet wurden
     const unanswered = questions.some(
       question => !selected[question.id]?.length
     );

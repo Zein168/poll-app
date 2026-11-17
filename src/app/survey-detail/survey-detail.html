@@ -83,25 +83,34 @@
       </button>
     </div>
   </section>
-  <section>
-    <div class="survey-results__header" [class.has-votes]="hasVotes()">
-      <p class="survey-results__title">Survey results <span class="live">LIVE</span></p>
-      @if (!hasVotes()) {
-        <p class="survey-results__description">
-          Results will be shown here after participants complete the survey.
-        </p>
-        <p class="survey-results__empty">There are no answears yet.</p>
-      }
-    </div>
 
-    <div class="survey-results">
+<section>
+  <div class="survey-results__header" [class.has-votes]="hasVotes()">
+    <p class="survey-results__title">
+      Survey results <span class="live">LIVE</span>
+    </p>
+
+    @if (!hasVotes()) {
+      <p class="survey-results__description">
+        Results will be shown here after participants complete the survey.
+      </p>
+
+      <p class="survey-results__empty">
+        There are no answers yet.
+      </p>
+    }
+  </div>
+
+  <div class="survey-results">
+    @if (hasVotes()) {
       @for (question of supabase.questions(); track question.id) {
         <div class="survey-results__question">
-          <!-- Fragetext anzeigen -->
           <h3>{{ question.question_text }}</h3>
 
           @for (
-            answer of supabase.answers().filter((a) => a.question_id === question.id);
+            answer of supabase.answers().filter(
+              (a) => a.question_id === question.id
+            );
             track answer.id;
             let i = $index
           ) {
@@ -111,15 +120,21 @@
               <div class="survey-results__bar">
                 <div
                   class="survey-results__bar-fill"
-                  [style.width.%]="supabase.getAnswerPercentage(question.id, answer.id)"
+                  [style.width.%]="
+                    supabase.getAnswerPercentage(question.id, answer.id)
+                  "
                 ></div>
               </div>
 
-              <span> {{ supabase.getAnswerPercentage(question.id, answer.id) }}% </span>
+              <span>
+                {{ supabase.getAnswerPercentage(question.id, answer.id) }}%
+              </span>
             </div>
           }
         </div>
       }
-    </div>
-  </section>
+    }
+  </div>
+</section>
+
 </main>
