@@ -357,7 +357,16 @@ h3 {
   padding-bottom: 4px;
 }
 
+.new-survey__input-row-survey-name {
+  img {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
 
 .new-survey__input-row-survey-name,
 .new-survey__input-row-date {

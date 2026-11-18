@@ -33,7 +33,7 @@ export class NewSurvey {
   questions = signal<SurveyQuestion[]>([
     {
       id: 1,
-      text: 'Which date would work best for you?',
+      text: '',
       allowMultipleAnswers: false,
       answers: [
         { id: 1, text: '' },

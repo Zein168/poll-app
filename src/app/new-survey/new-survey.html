@@ -28,7 +28,11 @@
                 [value]="surveyTitle()"
                 (input)="surveyTitle.set($any($event.target).value)"
               />
-              <img src="assets/delete.svg" alt="" />
+              <img
+                src="assets/delete.svg"
+                alt="Delete survey title"
+                (click)="surveyTitle.set('')"
+              />
             </div>
           </div>
 
@@ -43,7 +47,7 @@
                   [value]="endDate()"
                   (input)="endDate.set($any($event.target).value)"
                 />
-                <img src="assets/delete.svg" alt="" />
+                <img src="assets/delete.svg" alt="Delete date" (click)="endDate.set('')" />
               </div>
             </div>
 
@@ -101,13 +105,21 @@
               <div class="new-survey__field">
                 <div class="new-survey__field-box">
                   <label [for]="'question-' + question.id"> {{ i + 1 }}. Question </label>
-                  <img class="new-survey__delete-icon" src="assets/delete.svg" alt="" />
+                  <img
+                    class="new-survey__delete-icon"
+                    src="assets/delete.svg"
+                    alt="Delete question text"
+                    (click)="updateQuestion(question.id, '')"
+                  />
                 </div>
 
                 <input
                   class="new-survey__input new-survey__input--question"
                   [id]="'question-' + question.id"
                   type="text"
+                  [placeholder]="
+                    i === 0 ? 'Which date would work best for you?' : 'Choose the activities you prefer?'
+                  "
                   [value]="question.text"
                   (input)="updateQuestion(question.id, $any($event.target).value)"
                 />
