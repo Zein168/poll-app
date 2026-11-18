@@ -135,7 +135,7 @@
 }
 
 .survey-results {
-    width: 360px;
+   
 }
 
 .survey-results__item {
@@ -166,6 +166,7 @@
 
 .survey-results__header {
     padding-top: 180px;
+    width: 360px;
 
     &.has-votes {
         padding-top: 120px;

@@ -3,7 +3,8 @@ import {
   ViewChild,
   ElementRef,
   HostListener,
-  AfterViewInit
+  Injector,
+  afterNextRender
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Supabase } from '../services/supabase';
@@ -16,15 +17,19 @@ import { NewSurvey } from '../new-survey/new-survey';
   styleUrl: './dashboard.scss',
 
 })
-export class Dashboard implements OnInit, AfterViewInit {
+export class Dashboard implements OnInit {
   supabase = inject(Supabase);
+  injector = inject(Injector);
 
-  ngOnInit() {
-    this.supabase.getSurveys();
-  }
+  async ngOnInit() {
+    await this.supabase.getSurveys();
 
-  ngAfterViewInit() {
-    this.updateScrollbar();
+    afterNextRender(
+      () => {
+        this.updateScrollbar();
+      },
+      { injector: this.injector }
+    );
   }
 
   getDaysUntil(endDate: string): number {
@@ -167,10 +172,10 @@ export class Dashboard implements OnInit, AfterViewInit {
   }
 
   get showScrollbar(): boolean {
-  if (!this.surveyList) return false;
+    if (!this.surveyList) return false;
 
-  const list = this.surveyList.nativeElement;
+    const list = this.surveyList.nativeElement;
 
-  return list.scrollHeight > list.clientHeight;
-}
+    return list.scrollHeight > list.clientHeight;
+  }
 }
