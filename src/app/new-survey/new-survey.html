@@ -118,7 +118,11 @@
                   [id]="'question-' + question.id"
                   type="text"
                   [placeholder]="
-                    i === 0 ? 'Which date would work best for you?' : 'Choose the activities you prefer?'
+                    i === 0
+                      ? 'Which date would work best for you?'
+                      : i === 1
+                        ? 'What activities would you enjoy?'
+                        : ''
                   "
                   [value]="question.text"
                   (input)="updateQuestion(question.id, $any($event.target).value)"
