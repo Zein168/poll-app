@@ -51,10 +51,12 @@ export class NewSurvey {
         question.id === questionId
           ? {
             ...question,
-            answers: [
-              ...question.answers,
-              { id: this.nextAnswerId++, text: '' },
-            ],
+            answers: question.answers.length < 6
+              ? [
+                ...question.answers,
+                { id: this.nextAnswerId++, text: '' },
+              ]
+              : question.answers,
           }
           : question
       )

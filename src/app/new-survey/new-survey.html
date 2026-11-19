@@ -146,7 +146,7 @@
                 @for (answer of question.answers; track answer.id; let j = $index) {
                   <div class="new-survey__answer-row">
                     <label [for]="'answer-' + answer.id">
-                      {{ ['A.', 'B.', 'C.', 'D.'][j] ?? j + 1 + '.' }}
+                      {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
                     </label>
 
                     <input
@@ -219,7 +219,10 @@
             <img src="assets/survey_success_close_icon.svg" alt="" />
           </button>
 
-          <p>Your survey is now <br> published</p>
+          <p>
+            Your survey is now <br />
+            published
+          </p>
         </div>
       </div>
     }
