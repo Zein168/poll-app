@@ -399,14 +399,23 @@ h3 {
 .new-survey__success-card {
   position: relative;
   background-color: #FEE9D4;
-  padding: 60px;
-  border-radius: 4px 40px 4px 4px;
+  padding: 30px;
+  border-radius: 4px 60px 4px 4px;
   min-width: 400px;
-  text-align: center;
+  text-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   p {
     color: #35273A;
     font-size: 28px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    align-self: flex-start;
   }
 }
 
@@ -418,9 +427,10 @@ h3 {
   border: none;
   cursor: pointer;
   color: #35273A;
+  padding-top: 20px;
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }
