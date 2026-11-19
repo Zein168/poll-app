@@ -108,8 +108,8 @@
                   <img
                     class="new-survey__delete-icon"
                     src="assets/delete.svg"
-                    alt="Delete question text"
-                    (click)="updateQuestion(question.id, '')"
+                    alt="Delete question"
+                    (click)="i === 0 ? clearQuestion(question.id) : deleteQuestion(question.id, i)"
                   />
                 </div>
 
@@ -157,7 +157,11 @@
                       (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
                     />
 
-                    <img src="assets/delete.svg" alt="" />
+                    <img
+                      src="assets/delete.svg"
+                      alt="Clear answer"
+                      (click)="updateAnswer(question.id, answer.id, '')"
+                    />
                   </div>
                 }
 
@@ -184,7 +188,12 @@
               [value]="description()"
               (input)="description.set($any($event.target).value)"
             />
-            <img class="new-survey__delete-description" src="assets/delete.svg" alt="" />
+            <img
+              class="new-survey__delete-description"
+              src="assets/delete.svg"
+              alt="Delete description"
+              (click)="description.set('')"
+            />
           </div>
         </div>
       </section>

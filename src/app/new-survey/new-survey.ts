@@ -16,7 +16,7 @@ interface SurveyQuestion {
 
 @Component({
   selector: 'app-new-survey',
-   standalone: true,
+  standalone: true,
   imports: [],
   templateUrl: './new-survey.html',
   styleUrl: './new-survey.scss',
@@ -42,7 +42,8 @@ export class NewSurvey {
     },
   ]);
 
-  private nextId = 3;
+  private nextQuestionId = 2;
+  private nextAnswerId = 3;
 
   addAnswer(questionId: number) {
     this.questions.update(questions =>
@@ -52,7 +53,7 @@ export class NewSurvey {
             ...question,
             answers: [
               ...question.answers,
-              { id: this.nextId++, text: '' },
+              { id: this.nextAnswerId++, text: '' },
             ],
           }
           : question
@@ -64,12 +65,12 @@ export class NewSurvey {
     this.questions.update(questions => [
       ...questions,
       {
-        id: this.nextId++,
+        id: this.nextQuestionId++,
         text: '',
         allowMultipleAnswers: false,
         answers: [
-          { id: this.nextId++, text: '' },
-          { id: this.nextId++, text: '' },
+          { id: this.nextAnswerId++, text: '' },
+          { id: this.nextAnswerId++, text: '' },
         ],
       },
     ]);
@@ -226,4 +227,32 @@ export class NewSurvey {
     )?.label || '';
   }
 
+  deleteQuestion(questionId: number, index: number): void {
+    this.questions.update((questions) => {
+      if (index === 0) {
+        return questions;
+      }
+
+      return questions.filter(
+        (question) => question.id !== questionId
+      );
+    });
+  }
+
+  clearQuestion(questionId: number): void {
+    this.questions.update(questions =>
+      questions.map(question =>
+        question.id === questionId
+          ? {
+            ...question,
+            text: '',
+            answers: question.answers.map(answer => ({
+              ...answer,
+              text: '',
+            })),
+          }
+          : question
+      )
+    );
+  }
 }
