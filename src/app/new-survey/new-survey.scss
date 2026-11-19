@@ -72,6 +72,28 @@ h3 {
     max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 122px;
+
+    scrollbar-color: #EE9236 #433349;
+
+    // Chrome, Edge, Safari
+    &::-webkit-scrollbar {
+      width: 60px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #433349;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #EE9236;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #F5AC60;
+    }
   }
 
   .new-survey__answer-row {
