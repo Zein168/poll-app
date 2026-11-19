@@ -22,10 +22,10 @@ interface SurveyQuestion {
   styleUrl: './new-survey.scss',
 })
 export class NewSurvey {
+  showSuccessOverlay = signal(false);
   closeOverlay = output<void>();
   supabase = inject(Supabase);
   router = inject(Router);
-
   surveyTitle = signal('');
   description = signal('');
   endDate = signal('');
@@ -195,7 +195,7 @@ export class NewSurvey {
       }
     }
 
-    this.closeOverlay.emit();
+    this.showSuccessOverlay.set(true);
   }
 
 

@@ -207,5 +207,21 @@
     <button type="button" class="new-survey__publish-button" (click)="publishSurvey()">
       <img src="assets/publish_button.svg" alt="" />
     </button>
+    @if (showSuccessOverlay()) {
+      <div class="new-survey__success-overlay">
+        <div class="new-survey__success-card">
+          <button
+            type="button"
+            class="new-survey__success-close"
+            aria-label="Close"
+            (click)="closeOverlay.emit()"
+          >
+            <img src="assets/survey_success_close_icon.svg" alt="" />
+          </button>
+
+          <p>Your survey is now published!</p>
+        </div>
+      </div>
+    }
   </div>
 </div>

@@ -385,3 +385,43 @@ h3 {
   display: flex;
   align-items: flex-start;
 }
+
+// Success overlay styles//
+.new-survey__success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.new-survey__success-card {
+  position: relative;
+  background-color: #FEE9D4;
+  padding: 60px;
+  border-radius: 4px 40px 4px 4px;
+  min-width: 400px;
+  text-align: center;
+
+  p {
+    color: #35273A;
+    font-size: 28px;
+  }
+}
+
+.new-survey__success-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #35273A;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
