@@ -181,13 +181,13 @@
         <div class="new-survey__field new-survey__field--right">
           <label for="description">Description text (optional)</label>
           <div class="new-survey__input-row">
-            <input
+            <textarea
               class="new-survey__input new-survey__input--description"
               id="description"
               type="text"
               [value]="description()"
               (input)="description.set($any($event.target).value)"
-            />
+            ></textarea>
             <img
               class="new-survey__delete-description"
               src="assets/delete.svg"
