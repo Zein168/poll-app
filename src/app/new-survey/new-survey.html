@@ -142,29 +142,29 @@
                     <span>Allow multiple answers.</span>
                   </label>
                 </div>
+                <div class="new-survey__answer-list">
+                  @for (answer of question.answers; track answer.id; let j = $index) {
+                    <div class="new-survey__answer-row">
+                      <label [for]="'answer-' + answer.id">
+                        {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
+                      </label>
 
-                @for (answer of question.answers; track answer.id; let j = $index) {
-                  <div class="new-survey__answer-row">
-                    <label [for]="'answer-' + answer.id">
-                      {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
-                    </label>
+                      <input
+                        class="new-survey__input new-survey__input--answer"
+                        [id]="'answer-' + answer.id"
+                        type="text"
+                        [value]="answer.text"
+                        (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
+                      />
 
-                    <input
-                      class="new-survey__input new-survey__input--answer"
-                      [id]="'answer-' + answer.id"
-                      type="text"
-                      [value]="answer.text"
-                      (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
-                    />
-
-                    <img
-                      src="assets/delete.svg"
-                      alt="Clear answer"
-                      (click)="updateAnswer(question.id, answer.id, '')"
-                    />
-                  </div>
-                }
-
+                      <img
+                        src="assets/delete.svg"
+                        alt="Clear answer"
+                        (click)="updateAnswer(question.id, answer.id, '')"
+                      />
+                    </div>
+                  }
+                </div>
                 <div class="new-survey__add-answer">
                   <button type="button" (click)="addAnswer(question.id)">
                     <span>Add answer</span>

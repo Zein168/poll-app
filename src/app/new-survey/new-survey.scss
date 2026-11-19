@@ -68,6 +68,12 @@ h3 {
     flex-direction: column;
   }
 
+  .new-survey__answer-list {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   .new-survey__answer-row {
     display: flex;
     align-items: center;
