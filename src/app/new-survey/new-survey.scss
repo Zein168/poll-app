@@ -72,7 +72,7 @@ h3 {
     max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 122px;
+    height: 100px;
 
     scrollbar-color: #EE9236 #433349;
 
@@ -134,7 +134,7 @@ h3 {
       border-radius: 8px;
       color: white;
       gap: 10px;
-      margin-top: 0;
+      margin-top: 8px;
 
 
       img {
@@ -155,7 +155,7 @@ h3 {
       align-items: center;
       gap: 6px;
       color: white;
-      padding: 0 0 4px 0;
+      padding: 20px 0 4px 0;
       text-decoration: none;
       background: transparent;
       border: none;
@@ -367,20 +367,18 @@ h3 {
 
 .new-survey__questions-scroll {
   width: 1000px;
-  height: auto;
-  overflow: visible;
-  scrollbar-gutter: auto;
-
+  height: 280px;
+    overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: 24px;
   row-gap: 40px;
   align-content: start;
-
   padding-right: 12px;
   box-sizing: border-box;
 }
-
 
 .new-survey__question-card {
   min-width: 0;
