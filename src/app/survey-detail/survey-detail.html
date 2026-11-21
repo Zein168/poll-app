@@ -39,9 +39,10 @@
       @for (question of supabase.questions(); track question.id; let i = $index) {
         <article class="survey-question">
           <p class="survey-question__text">{{ i + 1 }}. {{ question.question_text }}</p>
-         
-            <p class="survey-question__hint" [class.visible]="question.allow_multiple_answers">More than one answers are possible.</p>
-          
+
+          <p class="survey-question__hint" [class.visible]="question.allow_multiple_answers">
+            More than one answers are possible.
+          </p>
 
           <div class="survey-question__answers">
             @for (
@@ -51,7 +52,7 @@
             ) {
               <article class="survey-answer">
                 <input
-                  [type]="question.allow_multiple_answers ? 'checkbox' : 'radio'"
+                  type="checkbox"
                   [id]="'answer-' + answer.id"
                   [name]="'question-' + question.id"
                   [value]="answer.id"
@@ -84,57 +85,46 @@
     </div>
   </section>
 
-<section>
-  <div class="survey-results__header" [class.has-votes]="hasVotes()">
-    <p class="survey-results__title">
-      Survey results <span class="live">LIVE</span>
-    </p>
+  <section>
+    <div class="survey-results__header" [class.has-votes]="hasVotes()">
+      <p class="survey-results__title">Survey results <span class="live">LIVE</span></p>
 
-    @if (!hasVotes()) {
-      <p class="survey-results__description">
-        Results will be shown here after participants complete the survey.
-      </p>
+      @if (!hasVotes()) {
+        <p class="survey-results__description">
+          Results will be shown here after participants complete the survey.
+        </p>
 
-      <p class="survey-results__empty">
-        There are no answers yet.
-      </p>
-    }
-  </div>
-
-  <div class="survey-results">
-    @if (hasVotes()) {
-      @for (question of supabase.questions(); track question.id) {
-        <div class="survey-results__question">
-          <h3>{{ question.question_text }}</h3>
-
-          @for (
-            answer of supabase.answers().filter(
-              (a) => a.question_id === question.id
-            );
-            track answer.id;
-            let i = $index
-          ) {
-            <div class="survey-results__item">
-              <span>{{ ['A.', 'B.', 'C.', 'D.'][i] }}</span>
-
-              <div class="survey-results__bar">
-                <div
-                  class="survey-results__bar-fill"
-                  [style.width.%]="
-                    supabase.getAnswerPercentage(question.id, answer.id)
-                  "
-                ></div>
-              </div>
-
-              <span>
-                {{ supabase.getAnswerPercentage(question.id, answer.id) }}%
-              </span>
-            </div>
-          }
-        </div>
+        <p class="survey-results__empty">There are no answers yet.</p>
       }
-    }
-  </div>
-</section>
+    </div>
 
+    <div class="survey-results">
+      @if (hasVotes()) {
+        @for (question of supabase.questions(); track question.id) {
+          <div class="survey-results__question">
+            <h3>{{ question.question_text }}</h3>
+
+            @for (
+              answer of supabase.answers().filter((a) => a.question_id === question.id);
+              track answer.id;
+              let i = $index
+            ) {
+              <div class="survey-results__item">
+                <span>{{ ['A.', 'B.', 'C.', 'D.'][i] }}</span>
+
+                <div class="survey-results__bar">
+                  <div
+                    class="survey-results__bar-fill"
+                    [style.width.%]="supabase.getAnswerPercentage(question.id, answer.id)"
+                  ></div>
+                </div>
+
+                <span> {{ supabase.getAnswerPercentage(question.id, answer.id) }}% </span>
+              </div>
+            }
+          </div>
+        }
+      }
+    </div>
+  </section>
 </main>

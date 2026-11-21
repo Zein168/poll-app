@@ -113,6 +113,8 @@
         font-weight: 400;
         color: #35273A;
         visibility: hidden;
+        padding-left: 18px;
+        padding-bottom: 14px;
 
         &.visible {
             visibility: visible;
@@ -122,6 +124,7 @@
     &__answers {
         display: flex;
         flex-direction: column;
+        padding-left: 14px;
     }
 }
 
