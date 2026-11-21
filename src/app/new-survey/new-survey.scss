@@ -390,7 +390,22 @@ h3 {
 }
 
 .new-survey__delete-icon {
-  padding-bottom: 4px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+
+  background-color: transparent;
+  background-image: url('/assets/delete.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  &:hover {
+    background-image: url('/assets/delete_icon_hover.svg');
+  }
 }
 
 .new-survey__input-row-survey-name {

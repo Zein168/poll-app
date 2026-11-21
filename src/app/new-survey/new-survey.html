@@ -28,11 +28,12 @@
                 [value]="surveyTitle()"
                 (input)="surveyTitle.set($any($event.target).value)"
               />
-              <img
-                src="assets/delete.svg"
-                alt="Delete survey title"
+              <button
+                type="button"
+                class="new-survey__delete-icon"
+                aria-label="Delete survey title"
                 (click)="surveyTitle.set('')"
-              />
+              ></button>
             </div>
           </div>
 
@@ -47,7 +48,12 @@
                   [value]="endDate()"
                   (input)="endDate.set($any($event.target).value)"
                 />
-                <img src="assets/delete.svg" alt="Delete date" (click)="endDate.set('')" />
+                <button
+                  type="button"
+                  class="new-survey__delete-icon"
+                  aria-label="Delete date"
+                  (click)="endDate.set('')"
+                ></button>
               </div>
             </div>
 
@@ -105,12 +111,12 @@
               <div class="new-survey__field">
                 <div class="new-survey__field-box">
                   <label [for]="'question-' + question.id"> {{ i + 1 }}. Question </label>
-                  <img
+                  <button
+                    type="button"
                     class="new-survey__delete-icon"
-                    src="assets/delete.svg"
-                    alt="Delete question"
+                    aria-label="Delete question"
                     (click)="i === 0 ? clearQuestion(question.id) : deleteQuestion(question.id, i)"
-                  />
+                  ></button>
                 </div>
 
                 <input
@@ -157,11 +163,12 @@
                         (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
                       />
 
-                      <img
-                        src="assets/delete.svg"
-                        alt="Clear answer"
+                      <button
+                        type="button"
+                        class="new-survey__delete-icon"
+                        aria-label="Delete answer"
                         (click)="updateAnswer(question.id, answer.id, '')"
-                      />
+                      ></button>
                     </div>
                   }
                 </div>
@@ -188,12 +195,13 @@
               [value]="description()"
               (input)="description.set($any($event.target).value)"
             ></textarea>
-            <img
-              class="new-survey__delete-description"
-              src="assets/delete.svg"
-              alt="Delete description"
+
+            <button
+              type="button"
+              class="new-survey__delete-icon"
+              aria-label="Delete description"
               (click)="description.set('')"
-            />
+            ></button>
           </div>
         </div>
       </section>
