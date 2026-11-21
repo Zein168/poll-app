@@ -156,17 +156,21 @@
         cursor: pointer;
         flex-shrink: 0;
 
- 
+        &:checked {
+            border-color: transparent;
+            background-color: transparent;
+        }
 
         &:checked::after {
             content: "";
             display: block;
-            width: 12px;
-            height: 12px;
+            width: 16px;
+            height: 16px;
             background-image: url("/assets/checkmark.svg");
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
+            margin: 0;
         }
     }
 }
