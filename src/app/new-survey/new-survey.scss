@@ -55,6 +55,7 @@ h3 {
     color: white;
     padding-bottom: 4px;
     white-space: nowrap;
+    gap: 4px;
   }
 
   .new-survey__details {
@@ -351,18 +352,27 @@ h3 {
 .new-survey__checkbox {
   display: flex;
   align-items: center;
-
   box-sizing: border-box;
   justify-content: flex-end;
   text-align: right;
 
   input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
     background-color: transparent;
     border: 2px solid white;
     border-radius: 3px;
     cursor: pointer;
+
+    &:checked {
+       border: none;
+      background-image: url('/assets/checkmark.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
   }
 }
 
