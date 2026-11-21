@@ -106,7 +106,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(3, 300px);
   justify-content: center;
-  gap: 40px;
+  gap: 8px;
 }
 
 .dashboard__ending-soon-content {
@@ -124,7 +124,7 @@ h2 {
 .dashboard__survey-card {
   background-color: #FAF5FE;
   padding: 20px;
-  width: 300px;
+  width: 280px;
   height: 280px;
   min-height: 150px;
   box-sizing: border-box;
@@ -327,10 +327,7 @@ h2 {
   width: 486px;
   height: 140px;
   padding: 8px 16px;
-
 }
-
-
 
 .dashboard__all-survey-card-title {
   color: #FFCFA1;
