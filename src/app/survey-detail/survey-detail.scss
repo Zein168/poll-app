@@ -58,7 +58,7 @@
     &__actions {
         position: absolute;
         right: 40px;
-        bottom: 48px;
+        bottom: 26px;
     }
 
     &__description {
@@ -88,15 +88,15 @@
 
 .survey-questions {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 280px));
-    justify-content: space-between;
-    padding: 0 120px;
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 290px));
+    justify-content: center;
+    padding: 0 10px;
+    gap: 26px;
 }
 
 .survey-question {
 
-    h3 {
+    p {
         margin: 0;
         font-size: 18px;
         font-weight: 600;

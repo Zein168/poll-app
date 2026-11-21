@@ -38,7 +38,7 @@
     <div class="survey-questions">
       @for (question of supabase.questions(); track question.id; let i = $index) {
         <article class="survey-question">
-          <h3>{{ i + 1 }}. {{ question.question_text }}</h3>
+          <p>{{ i + 1 }}. {{ question.question_text }}</p>
           @if (question.allow_multiple_answers) {
             <p class="survey-question__hint">More than one answers are possible.</p>
           }
