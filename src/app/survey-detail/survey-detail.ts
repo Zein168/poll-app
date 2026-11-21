@@ -11,7 +11,6 @@ import { Supabase } from '../services/supabase';
 export class SurveyDetail implements OnInit {
   supabase = inject(Supabase);
   route = inject(ActivatedRoute);
-
   survey = signal<{
     id: number;
     title: string;
@@ -54,8 +53,6 @@ export class SurveyDetail implements OnInit {
     allowMultiple: boolean
   ) {
     this.selectedAnswers.update(selected => {
-      const id = Number(questionId);
-      const answer = Number(answerId);
       const currentAnswers = selected[questionId] ?? [];
 
       let newAnswers: number[];
@@ -63,14 +60,14 @@ export class SurveyDetail implements OnInit {
       if (allowMultiple) {
         newAnswers = checked
           ? [...currentAnswers, answerId]
-          : currentAnswers.filter(value => value !== answer);
+          : currentAnswers.filter(value => value !== answerId);
       } else {
         newAnswers = checked ? [answerId] : [];
       }
 
       return {
         ...selected,
-        [id]: newAnswers
+        [questionId]: newAnswers
       };
     });
   }
