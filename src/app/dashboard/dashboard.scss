@@ -166,9 +166,8 @@ h2 {
 
 .dashboard__survey-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
-  width: 996px;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
@@ -200,6 +199,7 @@ h2 {
   display: flex;
   gap: 24px;
   align-items: center;
+  padding-right: 40px;
 }
 
 .dashboard__category-field {
@@ -325,7 +325,7 @@ h2 {
   border-radius: 0 60px 0 0;
   cursor: pointer;
   width: 486px;
-  height: 140px;
+  height: 120px;
   padding: 8px 16px;
 }
 
@@ -346,8 +346,8 @@ h2 {
 .dashboard__all-survey-card-date {
   background-color: #FFCFA1;
   color: #35273A;
-  padding: 6px 4px;
-  border-radius: 0 20px 0 0;
+  padding: 2px 6px;
+  border-radius: 0 16px 0 0;
   align-self: flex-end;
   margin-top: auto;
   flex-shrink: 0;
