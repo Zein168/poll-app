@@ -172,6 +172,7 @@ h2 {
   box-sizing: border-box;
   margin: 0 auto;
   padding-top: 40px;
+  gap: 60px;
 }
 
 .dashboard__survey-tab {
@@ -279,10 +280,10 @@ h2 {
 
 .dashboard__all-surveys-list {
   display: grid;
-  grid-template-columns: repeat(2, 490px);
+  grid-template-columns: repeat(2, 460px);
   justify-content: center;
   gap: 16px;
-  padding: 30px 0 20px;
+  padding: 20px 0 20px;
   max-height: 440px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -305,8 +306,8 @@ h2 {
 
 .dashboard__scroll-thumb {
   position: absolute;
-  width: 8px;
-  height: 80px;
+  width: 6px;
+  height: 46px;
   background: #FFB770;
   border-radius: 10px;
   cursor: pointer;
@@ -324,7 +325,7 @@ h2 {
   flex-direction: column;
   border-radius: 0 60px 0 0;
   cursor: pointer;
-  width: 486px;
+  width: 460px;
   height: 120px;
   padding: 8px 16px;
 }
