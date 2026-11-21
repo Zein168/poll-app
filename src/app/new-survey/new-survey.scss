@@ -326,6 +326,7 @@ h3 {
   align-items: center;
   width: 440px;
   box-sizing: border-box;
+  padding-bottom: 6px;
 }
 
 .new-survey__date-label {
@@ -429,6 +430,7 @@ h3 {
 .new-survey__input-row {
   display: flex;
   align-items: flex-start;
+  gap: 4px;
 }
 
 // Success overlay styles//
