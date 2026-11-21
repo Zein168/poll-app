@@ -130,12 +130,19 @@
 
 .survey-answer {
     display: flex;
-    align-items: start;
+        align-items: center;
     gap: 4px;
     padding-bottom: 8px;
+    transition: background-color 0.2s ease;
 
     p {
         margin: 0;
+    }
+
+    &:hover {
+        background-color: #FEEBD9;
+        border-radius: 10px;
+        cursor: pointer;
     }
 }
 
