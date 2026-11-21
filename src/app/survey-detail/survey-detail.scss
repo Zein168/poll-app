@@ -150,11 +150,13 @@
         -webkit-appearance: none;
         width: 16px;
         height: 16px;
+        
         border: 2px solid #35273A;
         border-radius: 4px;
         background-color: transparent;
         cursor: pointer;
         flex-shrink: 0;
+        
 
         &:checked {
             border-color: transparent;
@@ -170,7 +172,8 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            margin: 0;
+             transform: translate(-3px, -3px);
+            
         }
     }
 }
