@@ -1,4 +1,9 @@
-import { Component, signal, inject, output } from '@angular/core';
+import {
+  Component, signal, inject, output,
+  ViewChild,
+  ElementRef,
+  HostListener
+} from '@angular/core';
 import { Supabase } from '../services/supabase';
 import { Router } from '@angular/router';
 
@@ -256,5 +261,71 @@ export class NewSurvey {
           : question
       )
     );
+  }
+
+  @ViewChild('questionsScroll')
+  questionsScroll?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('scrollTrack')
+  scrollTrack?: ElementRef<HTMLDivElement>;
+
+  @ViewChild('scrollThumb')
+  scrollThumb?: ElementRef<HTMLDivElement>;
+
+  thumbTop = 0;
+  thumbHeight = 60;
+
+isDragging = false;
+startY = 0;
+startScrollTop = 0;
+
+  updateScrollbar(): void {
+    if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
+
+    const list = this.questionsScroll.nativeElement;
+    const track = this.scrollTrack.nativeElement;
+
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const thumbHeight = this.scrollThumb.nativeElement.offsetHeight;
+    const maxThumbTop = track.clientHeight - thumbHeight;
+
+    this.thumbTop = maxScroll > 0
+      ? (list.scrollTop / maxScroll) * maxThumbTop
+      : 0;
+  }
+  startDragging(event: PointerEvent): void {
+    if (!this.questionsScroll) return;
+
+    this.isDragging = true;
+    this.startY = event.clientY;
+    this.startScrollTop =
+      this.questionsScroll.nativeElement.scrollTop;
+
+    event.preventDefault();
+  }
+
+  @HostListener('document:pointermove', ['$event'])
+  onDrag(event: PointerEvent): void {
+    if (!this.isDragging || !this.questionsScroll || !this.scrollTrack) return;
+
+    const list = this.questionsScroll.nativeElement;
+    const track = this.scrollTrack.nativeElement;
+
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const maxThumbTop = track.clientHeight - this.thumbHeight;
+
+    if (maxScroll <= 0 || maxThumbTop <= 0) return;
+
+    const delta = event.clientY - this.startY;
+
+    list.scrollTop =
+      this.startScrollTop + (delta / maxThumbTop) * maxScroll;
+
+    this.updateScrollbar();
+  }
+
+  @HostListener('document:pointerup')
+  stopDragging(): void {
+    this.isDragging = false;
   }
 }
