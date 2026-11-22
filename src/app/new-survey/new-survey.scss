@@ -43,7 +43,7 @@ h3 {
 .new-survey__form {
   background-color: #433349;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 400px;
+  grid-template-columns: minmax(0, 1fr) 500px;
   column-gap: 24px;
   align-items: start;
   border-radius: 5px 100px 5px 5px;
@@ -247,7 +247,7 @@ h3 {
 }
 
 .new-survey__input--description {
-  width: 400px;
+  width: 440px;
   height: 120px;
   resize: vertical;
   text-align: left;
