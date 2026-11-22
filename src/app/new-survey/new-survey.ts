@@ -81,6 +81,7 @@ export class NewSurvey {
         ],
       },
     ]);
+    this.scrollToNewQuestion();
   }
 
   updateQuestion(questionId: number, text: string) {
@@ -275,9 +276,9 @@ export class NewSurvey {
   thumbTop = 0;
   thumbHeight = 60;
 
-isDragging = false;
-startY = 0;
-startScrollTop = 0;
+  isDragging = false;
+  startY = 0;
+  startScrollTop = 0;
 
   updateScrollbar(): void {
     if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
@@ -327,5 +328,20 @@ startScrollTop = 0;
   @HostListener('document:pointerup')
   stopDragging(): void {
     this.isDragging = false;
+  }
+
+  scrollToNewQuestion(): void {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const element = this.questionsScroll?.nativeElement;
+
+        if (element) {
+          element.scrollTo({
+            top: element.scrollHeight,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   }
 }

@@ -149,6 +149,7 @@ h3 {
     }
   }
 
+
   .new-survey__add-answer {
     width: 120px;
     border-bottom: 1px solid white;
@@ -405,7 +406,7 @@ h3 {
   flex-shrink: 0;
   background: #72524A;
   border-radius: 10px;
-   transform: translateX(14px);
+  transform: translateX(14px);
 }
 
 .new-survey__scroll-track {
@@ -496,6 +497,11 @@ h3 {
   align-items: flex-start;
   gap: 4px;
 }
+
+.new-survey__form:has(.new-survey__question-card:nth-child(3)) .new-survey__actions .new-survey__add-question {
+  margin-top: 20px;
+}
+
 
 // Success overlay styles//
 .new-survey__success-overlay {
