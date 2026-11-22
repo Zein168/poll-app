@@ -185,14 +185,20 @@
               </section>
             }
           </div>
-          <div #scrollTrack class="new-survey__scroll-track">
+          @if (questions().length >= 3) {
             <div
-              #scrollThumb
-              class="new-survey__scroll-thumb"
-              [style.top.px]="thumbTop"
-              (pointerdown)="startDragging($event)"
-            ></div>
-          </div>
+              #scrollTrack
+              class="new-survey__scroll-track"
+              [class.visible]="questions().length >= 3"
+            >
+              <div
+                #scrollThumb
+                class="new-survey__scroll-thumb"
+                [style.top.px]="thumbTop"
+                (pointerdown)="startDragging($event)"
+              ></div>
+            </div>
+          }
         </div>
       </div>
       <!-- Section 3 -->
