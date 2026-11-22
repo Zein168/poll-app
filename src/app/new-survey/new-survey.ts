@@ -298,36 +298,49 @@ export class NewSurvey implements AfterViewChecked {
       ? (list.scrollTop / maxScroll) * maxThumbTop
       : 0;
   }
-  startDragging(event: PointerEvent): void {
-    if (!this.questionsScroll) return;
 
-    this.isDragging = true;
-    this.startY = event.clientY;
-    this.startScrollTop =
-      this.questionsScroll.nativeElement.scrollTop;
-
-    event.preventDefault();
-  }
 
   @HostListener('document:pointermove', ['$event'])
-  onDrag(event: PointerEvent): void {
-    if (!this.isDragging || !this.questionsScroll || !this.scrollTrack) return;
+startDragging(event: PointerEvent): void {
+  if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
 
-    const list = this.questionsScroll.nativeElement;
-    const track = this.scrollTrack.nativeElement;
+  this.isDragging = true;
+  this.startY = event.clientY;
+  this.startScrollTop = this.questionsScroll.nativeElement.scrollTop;
 
-    const maxScroll = list.scrollHeight - list.clientHeight;
-    const maxThumbTop = track.clientHeight - this.thumbHeight;
+  event.preventDefault();
+}
 
-    if (maxScroll <= 0 || maxThumbTop <= 0) return;
+@HostListener('document:pointermove', ['$event'])
+onDrag(event: PointerEvent): void {
+  if (
+    !this.isDragging ||
+    !this.questionsScroll ||
+    !this.scrollTrack ||
+    !this.scrollThumb
+  ) return;
 
-    const delta = event.clientY - this.startY;
+  const list = this.questionsScroll.nativeElement;
+  const track = this.scrollTrack.nativeElement;
+  const thumb = this.scrollThumb.nativeElement;
 
-    list.scrollTop =
-      this.startScrollTop + (delta / maxThumbTop) * maxScroll;
+  const maxScroll = list.scrollHeight - list.clientHeight;
+  const maxThumbTop = track.clientHeight - thumb.offsetHeight;
 
-    this.updateScrollbar();
-  }
+  if (maxScroll <= 0 || maxThumbTop <= 0) return;
+
+  const delta = event.clientY - this.startY;
+
+  list.scrollTop = Math.max(
+    0,
+    Math.min(
+      maxScroll,
+      this.startScrollTop + (delta / maxThumbTop) * maxScroll
+    )
+  );
+
+  this.updateScrollbar();
+}
 
   @HostListener('document:pointerup')
   stopDragging(): void {
@@ -413,7 +426,7 @@ export class NewSurvey implements AfterViewChecked {
     event.preventDefault();
   }
 
-  @HostListener('document:pointermove', ['$event'])
+
   onAnswerDrag(event: PointerEvent): void {
     if (this.answerDraggingId === null) return;
 
