@@ -2,7 +2,8 @@ import {
   Component, signal, inject, output,
   ViewChild,
   ElementRef,
-  HostListener
+  HostListener,
+  AfterViewChecked
 } from '@angular/core';
 import { Supabase } from '../services/supabase';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ interface SurveyQuestion {
   templateUrl: './new-survey.html',
   styleUrl: './new-survey.scss',
 })
-export class NewSurvey {
+export class NewSurvey implements AfterViewChecked {
   showSuccessOverlay = signal(false);
   closeOverlay = output<void>();
   supabase = inject(Supabase);
@@ -66,6 +67,9 @@ export class NewSurvey {
           : question
       )
     );
+    requestAnimationFrame(() => {
+      this.updateAnswerScrollbar(questionId);
+    });
   }
 
   addQuestion() {
@@ -343,5 +347,96 @@ export class NewSurvey {
         }
       });
     });
+  }
+  private answerDraggingId: number | null = null;
+  private answerStartY = 0;
+  private answerStartScrollTop = 0;
+
+  private getAnswerElements(questionId: number) {
+    const wrapper = document.querySelector(
+      `[data-question-id="${questionId}"]`
+    );
+
+    if (!wrapper) return null;
+
+    const list = wrapper.querySelector(
+      '.new-survey__answer-list'
+    ) as HTMLDivElement | null;
+
+    const track = wrapper.querySelector(
+      '.new-survey__answer-scroll-track'
+    ) as HTMLDivElement | null;
+
+    const thumb = wrapper.querySelector(
+      '.new-survey__answer-scroll-thumb'
+    ) as HTMLDivElement | null;
+
+    if (!list || !track || !thumb) return null;
+
+    return { list, track, thumb };
+  }
+  ngAfterViewChecked(): void {
+    this.questions().forEach(question => {
+      this.updateAnswerScrollbar(question.id);
+    });
+  }
+  updateAnswerScrollbar(questionId: number): void {
+    const elements = this.getAnswerElements(questionId);
+    if (!elements) return;
+
+    const { list, track, thumb } = elements;
+
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const ratio = list.clientHeight / list.scrollHeight;
+    const thumbHeight = Math.max(30, track.clientHeight * ratio);
+
+    thumb.style.height = `${Math.min(thumbHeight, track.clientHeight)}px`;
+
+    const maxThumbTop = track.clientHeight - thumb.offsetHeight;
+
+    thumb.style.top = `${maxScroll > 0
+      ? (list.scrollTop / maxScroll) * maxThumbTop
+      : 0
+      }px`;
+
+    track.style.visibility = maxScroll > 0 ? 'visible' : 'hidden';
+  }
+
+  startAnswerDragging(event: PointerEvent, questionId: number): void {
+    const elements = this.getAnswerElements(questionId);
+    if (!elements) return;
+
+    this.answerDraggingId = questionId;
+    this.answerStartY = event.clientY;
+    this.answerStartScrollTop = elements.list.scrollTop;
+
+    event.preventDefault();
+  }
+
+  @HostListener('document:pointermove', ['$event'])
+  onAnswerDrag(event: PointerEvent): void {
+    if (this.answerDraggingId === null) return;
+
+    const elements = this.getAnswerElements(this.answerDraggingId);
+    if (!elements) return;
+
+    const { list, track, thumb } = elements;
+
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const maxThumbTop = track.clientHeight - thumb.offsetHeight;
+
+    if (maxScroll <= 0 || maxThumbTop <= 0) return;
+
+    const delta = event.clientY - this.answerStartY;
+
+    list.scrollTop =
+      this.answerStartScrollTop + (delta / maxThumbTop) * maxScroll;
+
+    this.updateAnswerScrollbar(this.answerDraggingId);
+  }
+
+  @HostListener('document:pointerup')
+  stopAnswerDragging(): void {
+    this.answerDraggingId = null;
   }
 }

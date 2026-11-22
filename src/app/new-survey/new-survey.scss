@@ -68,38 +68,45 @@ h3 {
     flex-direction: column;
   }
 
+  .new-survey__answer-wrapper {
+    display: flex;
+   
+  }
+
   .new-survey__answer-list {
+    flex: 1;
+    min-width: 0;
+    height: 100px;
     max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100px;
-
-    scrollbar-color: #EE9236 #433349;
+    scrollbar-width: none;
 
     &::-webkit-scrollbar {
-      width: 60px !important;
-    }
-
-    &::-webkit-scrollbar-button {
       display: none;
-      width: 0;
-      height: 0;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: #433349;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: #EE9236;
-      border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-      background: #F5AC60;
     }
   }
+  .new-survey__answer-scroll-track {
+  position: relative;
+  width: 8px;
+  height: 100px;
+  flex-shrink: 0;
+  background: #433349;
+  border-radius: 10px;
+  visibility: hidden;
+}
+
+.new-survey__answer-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 8px;
+  min-height: 30px;
+  background: #EE9236;
+  border-radius: 10px;
+  cursor: grab;
+  touch-action: none;
+}
 
   .new-survey__answer-row {
     display: flex;
@@ -244,7 +251,7 @@ h3 {
 }
 
 .new-survey__input--answer {
-  width: 100%
+  width: 86%
 }
 
 .new-survey__input--description {

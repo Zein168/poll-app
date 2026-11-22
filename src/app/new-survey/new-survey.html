@@ -151,29 +151,42 @@
                       <span>Allow multiple answers.</span>
                     </label>
                   </div>
-                  <div class="new-survey__answer-list">
-                    @for (answer of question.answers; track answer.id; let j = $index) {
-                      <div class="new-survey__answer-row">
-                        <label [for]="'answer-' + answer.id">
-                          {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
-                        </label>
+                  <div class="new-survey__answer-wrapper" [attr.data-question-id]="question.id">
+                    <div
+                      class="new-survey__answer-list"
+                      (scroll)="updateAnswerScrollbar(question.id)"
+                    >
+                      @for (answer of question.answers; track answer.id; let j = $index) {
+                        <div class="new-survey__answer-row">
+                          <label [for]="'answer-' + answer.id">
+                            {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
+                          </label>
 
-                        <input
-                          class="new-survey__input new-survey__input--answer"
-                          [id]="'answer-' + answer.id"
-                          type="text"
-                          [value]="answer.text"
-                          (input)="updateAnswer(question.id, answer.id, $any($event.target).value)"
-                        />
+                          <input
+                            class="new-survey__input new-survey__input--answer"
+                            [id]="'answer-' + answer.id"
+                            type="text"
+                            [value]="answer.text"
+                            (input)="
+                              updateAnswer(question.id, answer.id, $any($event.target).value)
+                            "
+                          />
 
-                        <button
-                          type="button"
-                          class="new-survey__delete-icon"
-                          aria-label="Delete answer"
-                          (click)="updateAnswer(question.id, answer.id, '')"
-                        ></button>
-                      </div>
-                    }
+                          <button
+                            type="button"
+                            class="new-survey__delete-icon"
+                            aria-label="Delete answer"
+                            (click)="updateAnswer(question.id, answer.id, '')"
+                          ></button>
+                        </div>
+                      }
+                    </div>
+                    <div class="new-survey__answer-scroll-track">
+                      <div
+                        class="new-survey__answer-scroll-thumb"
+                        (pointerdown)="startAnswerDragging($event, question.id)"
+                      ></div>
+                    </div>
                   </div>
                   <div class="new-survey__add-answer">
                     <button type="button" (click)="addAnswer(question.id)">
