@@ -300,49 +300,51 @@ export class NewSurvey implements AfterViewChecked {
   }
 
 
+
+  startDragging(event: PointerEvent): void {
+    if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
+
+    this.isDragging = true;
+    this.startY = event.clientY;
+    this.startScrollTop = this.questionsScroll.nativeElement.scrollTop;
+
+    event.preventDefault();
+  }
+
   @HostListener('document:pointermove', ['$event'])
-startDragging(event: PointerEvent): void {
-  if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
+  onDrag(event: PointerEvent): void {
+    if (
+      !this.isDragging ||
+      !this.questionsScroll ||
+      !this.scrollTrack ||
+      !this.scrollThumb
+    ) return;
 
-  this.isDragging = true;
-  this.startY = event.clientY;
-  this.startScrollTop = this.questionsScroll.nativeElement.scrollTop;
+    const list = this.questionsScroll.nativeElement;
+    const track = this.scrollTrack.nativeElement;
+    const thumb = this.scrollThumb.nativeElement;
 
-  event.preventDefault();
-}
+    const maxScroll = list.scrollHeight - list.clientHeight;
+    const maxThumbTop = track.clientHeight - thumb.offsetHeight;
 
-@HostListener('document:pointermove', ['$event'])
-onDrag(event: PointerEvent): void {
-  if (
-    !this.isDragging ||
-    !this.questionsScroll ||
-    !this.scrollTrack ||
-    !this.scrollThumb
-  ) return;
+    if (maxScroll <= 0 || maxThumbTop <= 0) return;
 
-  const list = this.questionsScroll.nativeElement;
-  const track = this.scrollTrack.nativeElement;
-  const thumb = this.scrollThumb.nativeElement;
+    const delta = event.clientY - this.startY;
 
-  const maxScroll = list.scrollHeight - list.clientHeight;
-  const maxThumbTop = track.clientHeight - thumb.offsetHeight;
+    list.scrollTop = Math.max(
+      0,
+      Math.min(
+        maxScroll,
+        this.startScrollTop + (delta / maxThumbTop) * maxScroll
+      )
+    );
 
-  if (maxScroll <= 0 || maxThumbTop <= 0) return;
+    this.updateScrollbar();
+  }
 
-  const delta = event.clientY - this.startY;
-
-  list.scrollTop = Math.max(
-    0,
-    Math.min(
-      maxScroll,
-      this.startScrollTop + (delta / maxThumbTop) * maxScroll
-    )
-  );
-
-  this.updateScrollbar();
-}
-
-  @HostListener('document:pointerup')
+  @HostListener('window:pointerup')
+  @HostListener('window:pointercancel')
+  @HostListener('window:blur')
   stopDragging(): void {
     this.isDragging = false;
   }
