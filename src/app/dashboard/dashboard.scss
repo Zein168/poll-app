@@ -166,13 +166,13 @@ h2 {
 
 .dashboard__survey-controls {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: flex-start;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
   padding-top: 40px;
-  gap: 60px;
+  gap: 216px;;
 }
 
 .dashboard__survey-tab {

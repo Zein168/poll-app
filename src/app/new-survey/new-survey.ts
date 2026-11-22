@@ -428,7 +428,7 @@ export class NewSurvey implements AfterViewChecked {
     event.preventDefault();
   }
 
-
+  @HostListener('document:pointermove', ['$event'])
   onAnswerDrag(event: PointerEvent): void {
     if (this.answerDraggingId === null) return;
 
