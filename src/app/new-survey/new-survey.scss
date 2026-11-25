@@ -190,15 +190,21 @@ h3 {
 }
 
 :host {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .new-survey {
   width: 100%;
   max-width: 1200px;
+  max-height: 90vh;
+  overflow-y: auto;
   margin: 0 auto;
   background-color: #35273A;
   box-sizing: border-box;

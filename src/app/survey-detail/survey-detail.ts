@@ -1,10 +1,11 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Supabase } from '../services/supabase';
+import { NewSurvey } from '../new-survey/new-survey';
 
 @Component({
   selector: 'app-survey-detail',
-  imports: [],
+  imports: [NewSurvey],
   templateUrl: './survey-detail.html',
   styleUrl: './survey-detail.scss',
 })
@@ -131,5 +132,14 @@ export class SurveyDetail implements OnInit {
 
   hasVotes(): boolean {
     return this.supabase.statistics().some(item => item.votes > 0);
+  }
+  showSurveyOverlay = false;
+
+  openSurveyOverlay() {
+    this.showSurveyOverlay = true;
+  }
+
+  closeSurveyOverlay() {
+    this.showSurveyOverlay = false;
   }
 }

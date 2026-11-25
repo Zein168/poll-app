@@ -4,10 +4,9 @@
     <p class="logo">Poll<br />App</p>
   </div>
 
-  <button class="button--create-survey" type="button" routerLink="/new-survey">
+  <button class="button--create-survey" type="button" (click)="openSurveyOverlay()">
     <p>Create survey</p>
-      <img class="new-survey__primary-button-icon" src="assets/add_circle_black.svg" alt="" />
-       
+    <img class="new-survey__primary-button-icon" src="assets/add_circle_black.svg" alt="" />
   </button>
 </header>
 
@@ -128,5 +127,8 @@
         }
       }
     </div>
+    @if (showSurveyOverlay) {
+      <app-new-survey (closeOverlay)="closeSurveyOverlay()"></app-new-survey>
+    }
   </section>
 </main>

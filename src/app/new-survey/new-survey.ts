@@ -504,4 +504,5 @@ export class NewSurvey implements AfterViewChecked {
 
     return isValid;
   }
+  
 }
