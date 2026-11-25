@@ -179,12 +179,17 @@
 }
 
 .button--complete-survey {
-    background-color: #F7DECD;
+    background-color: #F7DFCE;
     color: #35273A;
     border: none;
     padding: 10px 14px;
     margin: 0;
     border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #FFD3A9;
+    }
 }
 
 .survey-results__item {
