@@ -43,11 +43,14 @@
                 (click)="surveyTitle.set('')"
               ></button>
             </div>
-            @if (surveyTitleError()) {
-              <p class="new-survey__validation-error" id="survey-name-error" role="alert">
-                Please enter a survey name.
-              </p>
-            }
+            <p
+              class="new-survey__validation-error"
+              [class.visible]="surveyTitleError()"
+              id="survey-name-error"
+              role="alert"
+            >
+              Please enter a survey name.
+            </p>
           </div>
 
           <div class="new-survey__secondary-fields">
@@ -156,11 +159,13 @@
                     [value]="question.text"
                     (input)="updateQuestion(question.id, $any($event.target).value)"
                   />
-                  @if (questionErrors().includes(question.id)) {
-                    <p class="new-survey__validation-error" role="alert">
-                      Please enter a question.
-                    </p>
-                  }
+                  <p
+                    class="new-survey__validation-error"
+                    [class.visible]="questionErrors().includes(question.id)"
+                    role="alert"
+                  >
+                    Please enter a question.
+                  </p>
                 </div>
 
                 <div class="new-survey__answers">
@@ -214,15 +219,14 @@
                             (click)="updateAnswer(question.id, answer.id, '')"
                           ></button>
                         </div>
-                        @if (answerErrors().includes(answer.id)) {
-                          <p
-                            class="new-survey__validation-error"
-                            [id]="'answer-error-' + answer.id"
-                            role="alert"
-                          >
-                            Please enter an answer.
-                          </p>
-                        }
+                        <p
+                          class="new-survey__validation-error"
+                          [class.visible]="answerErrors().includes(answer.id)"
+                          [id]="'answer-error-' + answer.id"
+                          role="alert"
+                        >
+                          Please enter an answer.
+                        </p>
                       }
                     </div>
                     <div class="new-survey__answer-scroll-track">
