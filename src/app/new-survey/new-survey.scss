@@ -462,6 +462,7 @@ h3 {
 
 .new-survey__question-card {
   min-width: 0;
+  align-self: start;
 }
 
 .new-survey__delete-icon {
@@ -573,13 +574,17 @@ h3 {
 }
 
 .new-survey__validation-error {
-  color: #e53935;
-  font-size: 12px;
+  display: block;
+  height: 16px;
+  min-height: 16px;
   line-height: 16px;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  min-height: 16px;
+  color: #e53935;
+  font-size: 12px;
   visibility: hidden;
+  white-space: nowrap;
 }
 
 .new-survey__validation-error.visible {

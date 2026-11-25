@@ -188,11 +188,9 @@
                     >
                       @for (answer of question.answers; track answer.id; let j = $index) {
                         <div class="new-survey__answer-row">
-                          <label [for]="'answer-' + answer.id">
+                          <label class="new-survey__answer-label" [for]="'answer-' + answer.id">
+                           
                             {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
-                            @if (answerErrors().includes(answer.id)) {
-                              <span class="required">*</span>
-                            }
                           </label>
 
                           <input
