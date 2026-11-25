@@ -19,14 +19,22 @@
         <!-- Section 1 -->
         <section class="new-survey__details">
           <div class="new-survey__field">
-            <label for="survey-name">Survey name</label>
+            <label for="survey-name"
+              >Survey name
+              @if (surveyTitleError()) {
+                <span class="required">*</span>
+              }
+            </label>
             <div class="new-survey__input-row-survey-name">
               <input
                 class="new-survey__input new-survey__input--name"
                 id="survey-name"
                 type="text"
                 [value]="surveyTitle()"
-                (input)="surveyTitle.set($any($event.target).value)"
+                [class.input-error]="surveyTitleError()"
+                [attr.aria-invalid]="surveyTitleError() ? 'true' : null"
+                [attr.aria-describedby]="surveyTitleError() ? 'survey-name-error' : null"
+                (input)="updateSurveyTitle($any($event.target).value)"
               />
               <button
                 type="button"
@@ -35,6 +43,11 @@
                 (click)="surveyTitle.set('')"
               ></button>
             </div>
+            @if (surveyTitleError()) {
+              <p class="new-survey__validation-error" id="survey-name-error" role="alert">
+                Please enter a survey name.
+              </p>
+            }
           </div>
 
           <div class="new-survey__secondary-fields">
@@ -111,7 +124,12 @@
               <section class="new-survey__question-card">
                 <div class="new-survey__field">
                   <div class="new-survey__field-box">
-                    <label [for]="'question-' + question.id"> {{ i + 1 }}. Question </label>
+                    <label [for]="'question-' + question.id">
+                      {{ i + 1 }}. Question
+                      @if (questionErrors().includes(question.id)) {
+                        <span class="required">*</span>
+                      }
+                    </label>
                     <button
                       type="button"
                       class="new-survey__delete-icon"
@@ -124,6 +142,8 @@
 
                   <input
                     class="new-survey__input new-survey__input--question"
+                    [class.new-survey__input--error]="questionErrors().includes(question.id)"
+                    [attr.aria-invalid]="questionErrors().includes(question.id) ? 'true' : null"
                     [id]="'question-' + question.id"
                     type="text"
                     [placeholder]="
@@ -136,6 +156,11 @@
                     [value]="question.text"
                     (input)="updateQuestion(question.id, $any($event.target).value)"
                   />
+                  @if (questionErrors().includes(question.id)) {
+                    <p class="new-survey__validation-error" role="alert">
+                      Please enter a question.
+                    </p>
+                  }
                 </div>
 
                 <div class="new-survey__answers">
@@ -160,10 +185,20 @@
                         <div class="new-survey__answer-row">
                           <label [for]="'answer-' + answer.id">
                             {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
+                            @if (answerErrors().includes(answer.id)) {
+                              <span class="required">*</span>
+                            }
                           </label>
 
                           <input
                             class="new-survey__input new-survey__input--answer"
+                            [class.new-survey__input--error]="answerErrors().includes(answer.id)"
+                            [attr.aria-invalid]="answerErrors().includes(answer.id) ? 'true' : null"
+                            [attr.aria-describedby]="
+                              answerErrors().includes(answer.id)
+                                ? 'answer-error-' + answer.id
+                                : null
+                            "
                             [id]="'answer-' + answer.id"
                             type="text"
                             [value]="answer.text"
@@ -179,6 +214,15 @@
                             (click)="updateAnswer(question.id, answer.id, '')"
                           ></button>
                         </div>
+                        @if (answerErrors().includes(answer.id)) {
+                          <p
+                            class="new-survey__validation-error"
+                            [id]="'answer-error-' + answer.id"
+                            role="alert"
+                          >
+                            Please enter an answer.
+                          </p>
+                        }
                       }
                     </div>
                     <div class="new-survey__answer-scroll-track">

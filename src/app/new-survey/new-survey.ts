@@ -28,11 +28,14 @@ interface SurveyQuestion {
   styleUrl: './new-survey.scss',
 })
 export class NewSurvey implements AfterViewChecked {
+  questionErrors = signal<number[]>([]);
+  answerErrors = signal<number[]>([]);
   showSuccessOverlay = signal(false);
   closeOverlay = output<void>();
   supabase = inject(Supabase);
   router = inject(Router);
   surveyTitle = signal('');
+  surveyTitleError = signal(false);
   description = signal('');
   endDate = signal('');
   category = signal('');
@@ -50,6 +53,13 @@ export class NewSurvey implements AfterViewChecked {
 
   private nextQuestionId = 2;
   private nextAnswerId = 3;
+
+  updateSurveyTitle(title: string) {
+    this.surveyTitle.set(title);
+    if (title.trim()) {
+      this.surveyTitleError.set(false);
+    }
+  }
 
   addAnswer(questionId: number) {
     this.questions.update(questions =>
@@ -126,10 +136,11 @@ export class NewSurvey implements AfterViewChecked {
   }
 
   async publishSurvey() {
-    if (!this.surveyTitle().trim()) {
-      alert('Please enter a survey name.');
+    if (!this.validateSurvey()) {
       return;
     }
+
+    this.surveyTitleError.set(false);
 
     if (this.questions().length === 0) {
       alert('Please add at least one question.');
@@ -453,5 +464,44 @@ export class NewSurvey implements AfterViewChecked {
   @HostListener('document:pointerup')
   stopAnswerDragging(): void {
     this.answerDraggingId = null;
+  }
+
+  validateSurvey(): boolean {
+    let isValid = true;
+
+    if (!this.surveyTitle().trim()) {
+      this.surveyTitleError.set(true);
+      isValid = false;
+    } else {
+      this.surveyTitleError.set(false);
+    }
+
+    const invalidQuestions: number[] = [];
+    const invalidAnswers: number[] = [];
+
+    this.questions().forEach(question => {
+
+      if (!question.text.trim()) {
+        invalidQuestions.push(question.id);
+        isValid = false;
+      }
+
+      if (question.answers.length < 2) {
+        isValid = false;
+      }
+
+      question.answers.forEach(answer => {
+        if (!answer.text.trim()) {
+          invalidAnswers.push(answer.id);
+          isValid = false;
+        }
+      });
+
+    });
+
+    this.questionErrors.set(invalidQuestions);
+    this.answerErrors.set(invalidAnswers);
+
+    return isValid;
   }
 }

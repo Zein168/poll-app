@@ -70,7 +70,7 @@ h3 {
 
   .new-survey__answer-wrapper {
     display: flex;
-   
+
   }
 
   .new-survey__answer-list {
@@ -86,27 +86,28 @@ h3 {
       display: none;
     }
   }
-  .new-survey__answer-scroll-track {
-  position: relative;
-  width: 8px;
-  height: 100px;
-  flex-shrink: 0;
-  background: #433349;
-  border-radius: 10px;
-  visibility: hidden;
-}
 
-.new-survey__answer-scroll-thumb {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  width: 8px;
-  min-height: 30px;
-  background: #EE9236;
-  border-radius: 10px;
-  cursor: grab;
-  touch-action: none;
-}
+  .new-survey__answer-scroll-track {
+    position: relative;
+    width: 8px;
+    height: 100px;
+    flex-shrink: 0;
+    background: #433349;
+    border-radius: 10px;
+    visibility: hidden;
+  }
+
+  .new-survey__answer-scroll-thumb {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 8px;
+    min-height: 30px;
+    background: #EE9236;
+    border-radius: 10px;
+    cursor: grab;
+    touch-action: none;
+  }
 
   .new-survey__answer-row {
     display: flex;
@@ -239,6 +240,12 @@ h3 {
 .new-survey__input--name {
   width: 440px;
   box-sizing: border-box;
+}
+
+.new-survey__validation-error {
+  margin: 6px 0 0;
+  color: #ffb3a7;
+  font-size: 14px;
 }
 
 .new-survey__input--date {
@@ -559,4 +566,31 @@ h3 {
     width: 20px;
     height: 20px;
   }
+}
+
+//validation//
+
+.required {
+  color: #e53935;
+  margin-left: 3px;
+}
+
+.input-error {
+  border: 1px solid #e53935 !important;
+}
+
+.new-survey__validation-error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.new-survey__input--error {
+  border: 1px solid #dc2626;
+}
+
+.new-survey__validation-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin: 4px 0 8px;
 }
