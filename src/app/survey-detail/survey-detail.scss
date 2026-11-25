@@ -84,6 +84,36 @@
     font-size: 16px;
     box-sizing: border-box;
     border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 140px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    transform-origin: left;
+    cursor: pointer;
+
+    p {
+        white-space: nowrap;
+    }
+
+    &:hover {
+        width: 175px;
+        background-color: #FFB770;
+        gap: 12px;
+
+        .new-survey__primary-button-icon {
+            width: 22px;
+            opacity: 1;
+        }
+    }
+}
+
+.new-survey__primary-button-icon {
+    width: 0;
+    height: 22px;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .survey-questions {
@@ -150,13 +180,13 @@
         -webkit-appearance: none;
         width: 16px;
         height: 16px;
-        
+
         border: 2px solid #35273A;
         border-radius: 4px;
         background-color: transparent;
         cursor: pointer;
         flex-shrink: 0;
-        
+
 
         &:checked {
             border-color: transparent;
@@ -172,8 +202,8 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-             transform: translate(-3px, -3px);
-            
+            transform: translate(-3px, -3px);
+
         }
     }
 }
