@@ -189,7 +189,6 @@
                       @for (answer of question.answers; track answer.id; let j = $index) {
                         <div class="new-survey__answer-row">
                           <label class="new-survey__answer-label" [for]="'answer-' + answer.id">
-                           
                             {{ ['A.', 'B.', 'C.', 'D.', 'E.', 'F.'][j] ?? j + 1 + '.' }}
                           </label>
 
@@ -227,12 +226,15 @@
                         </p>
                       }
                     </div>
-                    <div class="new-survey__answer-scroll-track">
-                      <div
-                        class="new-survey__answer-scroll-thumb"
-                        (pointerdown)="startAnswerDragging($event, question.id)"
-                      ></div>
-                    </div>
+
+                    @if (question.answers.length >= 3) {
+                      <div class="new-survey__answer-scroll-track">
+                        <div
+                          class="new-survey__answer-scroll-thumb"
+                          (pointerdown)="startAnswerDragging($event, question.id)"
+                        ></div>
+                      </div>
+                    }
                   </div>
                   <div class="new-survey__add-answer">
                     <button type="button" (click)="addAnswer(question.id)">

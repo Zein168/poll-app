@@ -87,6 +87,7 @@ h3 {
     }
   }
 
+
   .new-survey__answer-scroll-track {
     position: relative;
     width: 8px;
@@ -95,6 +96,10 @@ h3 {
     background: #433349;
     border-radius: 10px;
     visibility: hidden;
+
+    &.visible {
+      visibility: visible;
+    }
   }
 
   .new-survey__answer-scroll-thumb {
