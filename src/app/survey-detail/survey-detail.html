@@ -127,8 +127,12 @@
         }
       }
     </div>
-    @if (showSurveyOverlay) {
-      <app-new-survey (closeOverlay)="closeSurveyOverlay()"></app-new-survey>
-    }
   </section>
 </main>
+@if (showSurveyOverlay) {
+  <div class="survey-overlay" (click)="closeSurveyOverlay()">
+    <div class="survey-overlay__content">
+      <app-new-survey (closeOverlay)="closeSurveyOverlay()"></app-new-survey>
+    </div>
+  </div>
+}
