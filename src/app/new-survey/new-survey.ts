@@ -35,6 +35,7 @@ export class NewSurvey implements AfterViewChecked {
   surveySaved = output<void>();
   supabase = inject(Supabase);
   router = inject(Router);
+  createdSurveyId: number | null = null;
   surveyTitle = signal('');
   surveyTitleError = signal(false);
   description = signal('');
@@ -219,6 +220,7 @@ export class NewSurvey implements AfterViewChecked {
       }
     }
 
+    this.createdSurveyId = survey.id;
     this.showSuccessOverlay.set(true);
     this.surveySaved.emit();
   }
@@ -508,4 +510,8 @@ export class NewSurvey implements AfterViewChecked {
     return isValid;
   }
 
+  goToSurveyDetails() {
+    if (this.createdSurveyId === null) return;
+    this.router.navigate(['/survey', this.createdSurveyId]);
+  }
 }
