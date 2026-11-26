@@ -425,11 +425,9 @@ h3 {
   background: #72524A;
   border-radius: 10px;
   transform: translateX(14px);
-}
-
-.new-survey__scroll-track {
   visibility: hidden;
 }
+
 
 .new-survey__scroll-track.visible {
   visibility: visible;
@@ -447,6 +445,8 @@ h3 {
   cursor: grab;
   touch-action: none;
   user-select: none;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 .new-survey__questions-scroll {

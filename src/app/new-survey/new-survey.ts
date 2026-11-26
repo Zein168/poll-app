@@ -310,8 +310,6 @@ export class NewSurvey implements AfterViewChecked {
       : 0;
   }
 
-
-
   startDragging(event: PointerEvent): void {
     if (!this.questionsScroll || !this.scrollTrack || !this.scrollThumb) return;
 
@@ -319,10 +317,11 @@ export class NewSurvey implements AfterViewChecked {
     this.startY = event.clientY;
     this.startScrollTop = this.questionsScroll.nativeElement.scrollTop;
 
+    (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
+
     event.preventDefault();
   }
 
-  @HostListener('document:pointermove', ['$event'])
   onDrag(event: PointerEvent): void {
     if (
       !this.isDragging ||
@@ -342,14 +341,16 @@ export class NewSurvey implements AfterViewChecked {
 
     const delta = event.clientY - this.startY;
 
-    list.scrollTop = Math.max(
+    this.thumbTop = Math.max(
       0,
       Math.min(
-        maxScroll,
-        this.startScrollTop + (delta / maxThumbTop) * maxScroll
+        maxThumbTop,
+        (this.startScrollTop / maxScroll) * maxThumbTop +
+        (delta / maxThumbTop) * maxThumbTop
       )
     );
 
+    list.scrollTop = (this.thumbTop / maxThumbTop) * maxScroll;
     this.updateScrollbar();
   }
 
@@ -504,5 +505,5 @@ export class NewSurvey implements AfterViewChecked {
 
     return isValid;
   }
-  
+
 }
