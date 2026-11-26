@@ -1,11 +1,11 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink  } from '@angular/router';
 import { Supabase } from '../services/supabase';
 import { NewSurvey } from '../new-survey/new-survey';
 
 @Component({
   selector: 'app-survey-detail',
-  imports: [NewSurvey],
+  imports: [NewSurvey, RouterLink],
   templateUrl: './survey-detail.html',
   styleUrl: './survey-detail.scss',
 })
