@@ -22,7 +22,26 @@ export class SurveyDetail implements OnInit {
     categories: string | null;
   } | null>(null);
 
+  get isSurveyClosed(): boolean {
+    const currentSurvey = this.survey();
 
+    if (!currentSurvey) return false;
+
+    const isInactive = currentSurvey.status !== 'active';
+
+    const today = new Date();
+    const todayString = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, '0'),
+      String(today.getDate()).padStart(2, '0')
+    ].join('-');
+
+    const isPastEndDate =
+      currentSurvey.end_date !== null &&
+      currentSurvey.end_date.slice(0, 10) < todayString;
+
+    return isInactive || isPastEndDate;
+  }
   selectedAnswers = signal<Record<number, number[]>>({});
 
   async ngOnInit() {
@@ -74,6 +93,10 @@ export class SurveyDetail implements OnInit {
   }
 
   async completeSurvey() {
+    if (this.isSurveyClosed) {
+      alert('This survey has already ended.');
+      return;
+    }
     const questions = this.supabase.questions();
     const selected = this.selectedAnswers();
     const unanswered = questions.some(

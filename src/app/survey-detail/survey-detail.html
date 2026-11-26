@@ -57,6 +57,7 @@
                   [id]="'answer-' + answer.id"
                   [name]="'question-' + question.id"
                   [value]="answer.id"
+                  [disabled]="isSurveyClosed"
                   [checked]="(selectedAnswers()[question.id] ?? []).includes(answer.id)"
                   (change)="
                     updateSelectedAnswer(
@@ -80,7 +81,7 @@
       }
     </div>
     <div class="survey-detail__actions">
-      <button class="button--complete-survey" type="button" (click)="completeSurvey()">
+      <button class="button--complete-survey" type="button"  [disabled]="isSurveyClosed" (click)="completeSurvey()">
         Complete survey
       </button>
     </div>

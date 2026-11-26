@@ -302,3 +302,18 @@
   padding: 40px;
 }
 //end-overlay//
+
+
+.survey-answer input:disabled {
+  cursor: not-allowed;
+}
+
+.button--complete-survey:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.survey-closed-message {
+  color: #d97706;
+  margin-bottom: 16px;
+}
