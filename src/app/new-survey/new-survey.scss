@@ -224,16 +224,48 @@ h3 {
 }
 
 .new-survey__publish-button {
-  display: block;
+  display: flex;
+  background: #FFCFA1;
+  color: #221227;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 120px;
   margin-left: auto;
   margin-right: 0;
-  padding: 0;
-  padding-top: 16px;
-  border: none;
-  background: transparent;
+  margin-top: 30px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  transform-origin: left;
   cursor: pointer;
+
+  span {
+    color: #221227;
+    font-size: 16px;
+  }
+
+
 }
 
+.new-survey__publish-button-icon {
+  width: 0;
+  height: 22px;
+  opacity: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.new-survey__publish-button:hover {
+  width: 175px;
+  background-color: #FFB770;
+
+  .new-survey__publish-button-icon {
+    width: 22px;
+    opacity: 1;
+  }
+}
 
 .new-survey__input {
   box-sizing: border-box;

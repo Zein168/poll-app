@@ -122,7 +122,7 @@
 
         <!-- Section 2 -->
         <div class="new-surveys__wrapper">
-          <div class="new-survey__questions-scroll" #questionsScroll  (scroll)="updateScrollbar()">
+          <div class="new-survey__questions-scroll" #questionsScroll (scroll)="updateScrollbar()">
             @for (question of questions(); track question.id; let i = $index) {
               <section class="new-survey__question-card">
                 <div class="new-survey__field">
@@ -296,7 +296,9 @@
       </div>
     </main>
     <button type="button" class="new-survey__publish-button" (click)="publishSurvey()">
-      <img src="assets/publish_button.svg" alt="" />
+      <span>Publish</span>
+      <img class="new-survey__publish-button-icon" src="assets/check_arrow.svg" alt="" />
+      
     </button>
     @if (showSuccessOverlay()) {
       <div class="new-survey__success-overlay">
@@ -305,7 +307,7 @@
             type="button"
             class="new-survey__success-close"
             aria-label="Close"
-           (click)="goToSurveyDetails()"
+            (click)="goToSurveyDetails()"
           >
             <img src="assets/survey_success_close_icon.svg" alt="" />
           </button>
