@@ -32,6 +32,7 @@ export class NewSurvey implements AfterViewChecked {
   answerErrors = signal<number[]>([]);
   showSuccessOverlay = signal(false);
   closeOverlay = output<void>();
+  surveySaved = output<void>();
   supabase = inject(Supabase);
   router = inject(Router);
   surveyTitle = signal('');
@@ -219,6 +220,7 @@ export class NewSurvey implements AfterViewChecked {
     }
 
     this.showSuccessOverlay.set(true);
+    this.surveySaved.emit();
   }
 
 

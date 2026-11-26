@@ -21,6 +21,8 @@ export class Dashboard implements OnInit {
   supabase = inject(Supabase);
   injector = inject(Injector);
 
+
+
   async ngOnInit() {
     await this.supabase.getSurveys();
 
@@ -177,5 +179,10 @@ export class Dashboard implements OnInit {
     const list = this.surveyList.nativeElement;
 
     return list.scrollHeight > list.clientHeight;
+  }
+
+  async onSurveySaved() {
+    await this.supabase.getSurveys();
+    this.updateScrollbar();
   }
 }
