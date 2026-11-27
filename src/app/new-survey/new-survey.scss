@@ -234,7 +234,7 @@ h3 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: 120px;
+  width: 100px;
   margin-left: auto;
   margin-right: 0;
   margin-top: 30px;
@@ -258,11 +258,12 @@ h3 {
 }
 
 .new-survey__publish-button:hover {
-  width: 175px;
+  width: 120px;
   background-color: #FFB770;
+  gap: 12px;
 
   .new-survey__publish-button-icon {
-    width: 22px;
+    width: 18px;
     opacity: 1;
   }
 }
