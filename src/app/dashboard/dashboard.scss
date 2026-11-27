@@ -107,6 +107,7 @@ h2 {
   grid-template-columns: repeat(3, 300px);
   justify-content: center;
   gap: 8px;
+  row-gap: 20px;
 }
 
 .dashboard__ending-soon-content {
@@ -165,14 +166,14 @@ h2 {
 }
 
 .dashboard__survey-controls {
-  display: flex;
-  justify-content: space-evenly;
+ display: flex;
+  justify-content: space-between;
   align-items: flex-start;
+  padding-top: 40px;
+  width: 936px;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0 auto;
-  padding-top: 40px;
-  gap: 216px;;
 }
 
 .dashboard__survey-tab {
