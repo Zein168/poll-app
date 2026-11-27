@@ -236,11 +236,14 @@
                       </div>
                     }
                   </div>
-                  <div class="new-survey__add-answer">
-                    <button type="button" (click)="addAnswer(question.id)">
-                      <span>Add answer</span>
-                      <img src="assets/add_circle.svg" alt="" />
-                    </button>
+                  <div class="new-survey__add-answer-container">
+                    <div class="new-survey__add-answer">
+                      <button type="button" (click)="addAnswer(question.id)">
+                        <span>Add answer</span>
+                        <img src="assets/add_circle.svg" alt="" />
+                      </button>
+                    </div>
+                    <div class="new-survey__add-answer-underline"></div>
                   </div>
                 </div>
               </section>
@@ -298,7 +301,6 @@
     <button type="button" class="new-survey__publish-button" (click)="publishSurvey()">
       <span>Publish</span>
       <img class="new-survey__publish-button-icon" src="assets/check_arrow.svg" alt="" />
-      
     </button>
     @if (showSuccessOverlay()) {
       <div class="new-survey__success-overlay">
