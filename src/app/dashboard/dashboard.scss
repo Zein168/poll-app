@@ -38,12 +38,14 @@ h1 {
   font-size: 100px;
   margin: 0;
   white-space: nowrap;
+  font-family: 'Nerko One', cursive;
 }
 
 .dashboard__header-text {
   p {
     color: #E6E4E6;
     font-size: 24px;
+    font-family: 'Mulish', sans-serif;
   }
 }
 
@@ -62,6 +64,8 @@ h1 {
   transition: width 0.3s ease, background-color 0.3s ease;
   transform-origin: left;
   cursor: pointer;
+  font-family: 'Nokora', sans-serif;
+  white-space: nowrap;
 }
 
 .dashboard__primary-button-icon {
@@ -100,6 +104,7 @@ h2 {
   color: #FFB770;
   text-align: center;
   font-size: 60px;
+  font-family: 'Nerko One', cursive;
 }
 
 .dashboard__survey-list {
@@ -166,7 +171,7 @@ h2 {
 }
 
 .dashboard__survey-controls {
- display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 40px;
