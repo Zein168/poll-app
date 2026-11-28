@@ -43,7 +43,7 @@
         <div class="dashboard__survey-list">
           @for (survey of endingSoonSurveys; track survey.id) {
             <article class="dashboard__survey-card" [routerLink]="['/survey', survey.id]">
-              <h3>{{ survey.categories }}</h3>
+              <p class="dashboard__survey-card-title">{{ survey.categories }}</p>
               <p>{{ survey.description }}</p>
               @if (survey.end_date) {
                 <p class="dashboard__survey-card-date">
@@ -73,7 +73,7 @@
             (click)="activeTab = 'active'"
             type="button"
           >
-            Active Surveys
+            <span>Active Surveys</span>
           </button>
 
           <button
@@ -82,7 +82,7 @@
             (click)="activeTab = 'past'"
             type="button"
           >
-            Past Surveys
+            <span>Past Surveys</span>
           </button>
         </div>
         <div class="dashboard__category-field">
